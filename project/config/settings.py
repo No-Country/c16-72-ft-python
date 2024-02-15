@@ -19,10 +19,10 @@ sys.path.append(str(APPS_DIR))
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "-^3er0e4c&$%-yi1+jy)e1t%nt#yckvhlz+u#ks9sx*ijaja(hy"
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
