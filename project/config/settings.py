@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Apps propias
     'home.apps.HomeConfig',
+    'historias_clinicas.apps.HistoriasClinicasConfig'
 ]
 
 MIDDLEWARE = [
