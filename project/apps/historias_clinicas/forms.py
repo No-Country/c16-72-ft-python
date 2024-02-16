@@ -1,10 +1,11 @@
 from django import forms
 from . import models
 
+
 class HistoriaClinicaForm(forms.ModelForm):
     class Meta:
         model = models.HistoriaClinica
-        fields = '__all__'
+        fields = ['paciente', 'antecedentes', 'alergias', 'observaciones']
         
 class EstudiosForm(forms.ModelForm):
     class Meta:

@@ -52,6 +52,7 @@ class HistoriaClinicaCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateV
     success_url = reverse_lazy("historias_clinicas:historiaclinica_list")
 
     def form_valid(self, form):
+        form.instance.medico_tratante = self.request.user
         messages.success(self.request, "Historia Clinica creada correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     def test_func(self):
