@@ -8,12 +8,14 @@
 
     {% include 'messages.html' %} 
 
-    {% if es_paciente and historia_clinica %}
+    {% if es_paciente %}
+        {% if historia_clinica %}
         <div class="d-grid gap-3">
             <a href="{% url 'historias_clinicas:historiaclinica_detail' historia_clinica.id %}" class="btn btn-primary">Ver mi Historia Clinica</a><br>
         </div>
-    {% else %}
+        {% else %}
         <p class="fs-4 fst-italic">No hay registros de Historia Clinica para este paciente</p>
+        {% endif %}
     {% endif %}
 
     {% if es_medico or user.is_superuser%}
