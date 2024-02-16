@@ -44,6 +44,4 @@ class Estudios(models.Model):
     def clean(self):
         if not self.medico_solicitante.groups.filter(name='Medicos').exists():
             raise ValidationError("El médico emisor debe ser parte del grupo 'Médicos'.")
-        if not self.paciente.groups.filter(name='Pacientes').exists():
-            raise ValidationError("El paciente debe ser parte del grupo 'Pacientes'.")
         super().clean()
