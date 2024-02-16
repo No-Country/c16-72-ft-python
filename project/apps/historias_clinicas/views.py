@@ -52,7 +52,7 @@ class HistoriaClinicaCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateV
     success_url = reverse_lazy("historias_clinicas:historiaclinica_list")
 
     def form_valid(self, form):
-        messages.success(self.request, "Historia Clinica creada correctamente.")
+        messages.success(self.request, "Historia Clinica creada correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     def test_func(self):
         """ Devuelve True si el usuario pertenece al grupo Medicos."""
@@ -64,7 +64,7 @@ class HistoriaClinicaDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
     success_url = reverse_lazy("historias_clinicas:historiaclinica_list")
 
     def get_success_url(self):
-            messages.success(self.request, "Historia Clinica eliminada correctamente.")
+            messages.success(self.request, "Historia Clinica eliminada correctamente.", extra_tags="alert alert-danger")
             return super().get_success_url()
     
     def test_func(self):
