@@ -31,7 +31,7 @@ class TipoDeEstudio(models.Model):
     
 class Estudios(models.Model):
     nombre = models.CharField(max_length=100)
-    paciente = models.ForeignKey(User, on_delete=models.CASCADE, )
+    paciente = models.ForeignKey(HistoriaClinica, on_delete=models.CASCADE, )
     medico_solicitante = models.ForeignKey(User, related_name='estudios_solicitados', on_delete=models.CASCADE)
     tipo = models.ForeignKey(TipoDeEstudio, on_delete=models.CASCADE)
     resultado = models.FileField(upload_to='estudios_resultados/', null=True, blank=True)
