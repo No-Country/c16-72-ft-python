@@ -4,8 +4,8 @@
     <h2 class="display-5 mb-4">Historia Clinica</h2>
 
     <ul class="list-group">
-        <li class="list-group-item"><strong>Paciente:</strong> {{ object.paciente.username }}</li>
-        <li class="list-group-item"><strong>Medico:</strong> {{ object.medico_tratante.username }}</li>
+        <li class="list-group-item"><strong>Paciente:</strong> {{ object.paciente.name }} {{ object.paciente.last_name }}</li>
+        <li class="list-group-item"><strong>Medico:</strong>Dr. {{ object.medico_tratante.name }} {{ object.medico_tratante.last_name }}</li>
         <li class="list-group-item"><strong>Fecha de creacion:</strong> {{ object.fecha_creacion }}</li>
         <li class="list-group-item"><strong>Antecedentes:</strong> {{ object.antecedentes }}</li>
         <li class="list-group-item"><strong>Alergias:</strong> {{ object.alergias }}</li>

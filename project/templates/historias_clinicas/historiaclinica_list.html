@@ -15,7 +15,7 @@
 {% block table_body %}
     {% for historia_clinica in object_list %}
         <tr>
-            <td>{{ historia_clinica.paciente.username }}</td>
+            <td>{{ historia_clinica.paciente.name  }} {{ historia_clinica.paciente.last_name }}</td>
     
             <td>
                 <a href="{% url 'historias_clinicas:historiaclinica_detail' historia_clinica.id %}" class="btn btn-secondary">Ver detalle</a>
