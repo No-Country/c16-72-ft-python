@@ -31,11 +31,9 @@ class IndexView(TemplateView):
         
         return context
  
-class HistoriaClinicaDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+class HistoriaClinicaDetail(LoginRequiredMixin, DetailView):
     model = models.HistoriaClinica
-    def test_func(self):
-        return medico_o_superuser(self.request.user)
-        
+
 class HistoriaClinicaList(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = models.HistoriaClinica
   
