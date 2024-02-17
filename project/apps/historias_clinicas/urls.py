@@ -6,6 +6,7 @@ from . import views
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     # HISTORIAS CLINICAS
+    path("historia/detail/paciente/", views.HistoriaPacienteDetail.as_view(), name="historiapaciente_detail"),
     path("historia/detail/<int:pk>", views.HistoriaClinicaDetail.as_view(), name="historiaclinica_detail"),
     path("historia/list/", views.HistoriaClinicaList.as_view(), name="historiaclinica_list"),
     path("historia/create/", views.HistoriaClinicaCreateView.as_view(), name="historiaclinica_create"),
