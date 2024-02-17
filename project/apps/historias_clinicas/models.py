@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.conf import settings
+
 
 class HistoriaClinica(models.Model):
-    paciente = models.OneToOneField(User, on_delete=models.CASCADE)
-    medico_tratante = models.ForeignKey(User, related_name='historias_clinicas_tratadas', on_delete=models.CASCADE)
+    paciente = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    medico_tratante = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='historias_clinicas_tratadas', on_delete=models.CASCADE)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     antecedentes = models.TextField(null=True, blank=True)
     alergias = models.TextField(null=True, blank=True)
@@ -32,7 +34,7 @@ class TipoDeEstudio(models.Model):
 class Estudios(models.Model):
     nombre = models.CharField(max_length=100)
     paciente = models.ForeignKey(HistoriaClinica, on_delete=models.CASCADE, )
-    medico_solicitante = models.ForeignKey(User, related_name='estudios_solicitados', on_delete=models.CASCADE)
+    medico_solicitante = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='estudios_solicitados', on_delete=models.CASCADE)
     tipo = models.ForeignKey(TipoDeEstudio, on_delete=models.CASCADE)
     resultado = models.FileField(upload_to='estudios_resultados/', null=True, blank=True)
     informe = models.TextField(null=True, blank=True)
