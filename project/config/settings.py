@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     
     # Apps propias
     'home.apps.HomeConfig',
+    'historias_clinicas.apps.HistoriasClinicasConfig'
 ]
 
 MIDDLEWARE = [
