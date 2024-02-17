@@ -34,15 +34,13 @@ class IndexView(TemplateView):
 class HistoriaClinicaDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = models.HistoriaClinica
     def test_func(self):
-        """ Devuelve True si el usuario pertenece al grupo Medicos."""
-        return self.request.user.groups.filter(name='Medicos').exists()
+        return medico_o_superuser(self.request.user)
         
 class HistoriaClinicaList(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = models.HistoriaClinica
   
     def test_func(self):
-        """ Devuelve True si el usuario pertenece al grupo Medicos."""
-        return self.request.user.groups.filter(name='Medicos').exists()
+        return medico_o_superuser(self.request.user)
     
 class HistoriaClinicaCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = models.HistoriaClinica
@@ -54,8 +52,7 @@ class HistoriaClinicaCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateV
         messages.success(self.request, "Historia Clinica creada correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     def test_func(self):
-        """ Devuelve True si el usuario pertenece al grupo Medicos."""
-        return self.request.user.groups.filter(name='Medicos').exists()
+        return medico_o_superuser(self.request.user)
     
 class HistoriaClinicaDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = models.HistoriaClinica
@@ -67,8 +64,7 @@ class HistoriaClinicaDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView)
             return super().get_success_url()
     
     def test_func(self):
-        """ Devuelve True si el usuario pertenece al grupo Medicos."""
-        return self.request.user.groups.filter(name='Medicos').exists()
+        return medico_o_superuser(self.request.user)
     
     
 class HistoriaClinicaUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -81,8 +77,9 @@ class HistoriaClinicaUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
         return super().form_valid(form)
     
     def test_func(self):
-        """ Devuelve True si el usuario pertenece al grupo Medicos."""
-        return self.request.user.groups.filter(name='Medicos').exists()
+        return medico_o_superuser(self.request.user)
+
+
     
     
 # Estudios views
@@ -97,3 +94,7 @@ class EstudioList(LoginRequiredMixin, ListView):
             return queryset
         else:
             return queryset.filter(paciente__paciente=user)
+        
+def medico_o_superuser(user):
+    """Devuelve True si el usuario pertenece al grupo Medicos o es un superusuario."""
+    return user.groups.filter(name='Medicos').exists() or user.is_superuser

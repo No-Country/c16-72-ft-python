@@ -13,6 +13,12 @@ Pasos para instalar el proyecto:
 Active el entorno virtual usando el comando `source .venv/bin/activate` en Linux o Mac, o `.venv\Scripts\activate` en Windows.
 Instale las dependencias del proyecto usando el comando `pip install -r requirements.txt`. 
 
+- Para configurar las variables de entorno crea un archivo llamado `.env` en el directorio raíz de tu proyecto, a la altura del archivo `settings.py`. Dentro de este archivo, define las variables de entorno de la siguiente manera:
+```plaintext
+SECRET_KEY=tu_clave_secreta
+DEBUG=True
+```
+
 - Ejecute las migraciones de la base de datos usando los comandos `python manage.py makemigrations` y `python manage.py migrate`. Esto creará las tablas necesarias en la base de datos.
 
 - Para ejecutar el servidor de desarrollo, muévase hasta el directorio del proyecto usando el comando `cd project` y use el comando `python manage.py runserver`. Esto iniciará el servidor en el puerto 8000 de su máquina local. Abre tu navegador y navega a `http://localhost:8000` para ver la aplicación en acción.

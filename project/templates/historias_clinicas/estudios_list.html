@@ -16,7 +16,7 @@
 {% block table_body %}
     {% for estudio in object_list %}
         <tr>
-            <td>{{ estudio.paciente.username }}</td>
+            <td>{{ estudio.paciente.name  }} {{ estudio.paciente.last_name }}</td>
             <td>{{ estudio.nombre }}</td>
             <td>
                 <a href="" class="btn btn-secondary">Ver detalle</a>
