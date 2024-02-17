@@ -1,0 +1,32 @@
+{% extends "medical_history/list.html" %}
+
+<h2 class="display-5 mb-4">Listado de Historias Clinicas</h2>
+       
+{% block table_header %}
+    <tr>
+        <th>Paciente</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        
+    </tr>
+{% endblock table_header %}
+     
+{% block table_body %}
+    {% for medical_history in object_list %}
+        <tr>
+            <td>{{ medical_history.patient.name  }} {{ medical_history.patient.last_name }}</td>
+    
+            <td>
+                <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-secondary">Ver detalle</a>
+            </td>
+            <td>
+                <a href="{% url 'medical_history:medicalhistory_update' medical_history.id %}" class="btn btn-primary">Actualizar</a>
+            </td>
+            <td>
+                <a href="{% url 'medical_history:medicalhistory_delete' medical_history.id %}" class="btn btn-danger">Eliminar</a>
+            </td>
+            
+        </tr>
+    {% endfor %}
+{% endblock table_body %}

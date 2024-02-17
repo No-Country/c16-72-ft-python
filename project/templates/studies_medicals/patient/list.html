@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for studie in studies_patients %}
+
+<h1>{{ studie.medical.name }}<h1>
+
+{% endfor %}
+
+{% endblock content %}
