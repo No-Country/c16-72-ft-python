@@ -16,6 +16,14 @@
         {% else %}
         <p class="fs-4 fst-italic">No hay registros de Historia Clinica para este paciente</p>
         {% endif %}
+
+        {% if estudios %}
+            <div class="d-grid gap-3">
+                <a href="{% url 'historias_clinicas:estudio_list' %}" class="btn btn-primary">Ver mis estudios</a><br>
+            </div>
+        {% else %}
+            <p class="fs-4 fst-italic">No hay estudios para este paciente</p>
+        {% endif %}
     {% endif %}
 
     {% if es_medico or user.is_superuser%}

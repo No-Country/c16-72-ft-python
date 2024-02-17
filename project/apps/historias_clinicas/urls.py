@@ -11,4 +11,6 @@ urlpatterns = [
     path("historia/create/", views.HistoriaClinicaCreateView.as_view(), name="historiaclinica_create"),
     path("historia/delete/<int:pk>", views.HistoriaClinicaDelete.as_view(), name="historiaclinica_delete"),
     path("historia/update/<int:pk>", views.HistoriaClinicaUpdate.as_view(), name="historiaclinica_update"),
+    # ESTUDIOS
+    path("historia/study/list/", views.EstudioList.as_view(), name="estudio_list"),
 ]

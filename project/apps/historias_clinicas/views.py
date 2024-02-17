@@ -8,9 +8,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 
 
-from django.views.generic import DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from . import models
 
 class IndexView(TemplateView):
     template_name = 'historias_clinicas/index.html'
@@ -22,6 +19,9 @@ class IndexView(TemplateView):
         try:
             historia_clinica = models.HistoriaClinica.objects.get(paciente=user)
             context['historia_clinica'] = historia_clinica
+            estudios = models.Estudios.objects.filter(paciente=historia_clinica)
+            if estudios:
+                context['estudios'] = True
         except models.HistoriaClinica.DoesNotExist:
             context['historia_clinica'] = None
 
@@ -30,9 +30,7 @@ class IndexView(TemplateView):
         context['es_medico'] = user.groups.filter(name='Medicos').exists()
         
         return context
-
-    
-    
+ 
 class HistoriaClinicaDetail(LoginRequiredMixin, UserPassesTestMixin, DetailView):
     model = models.HistoriaClinica
     def test_func(self):
@@ -86,3 +84,16 @@ class HistoriaClinicaUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView)
         """ Devuelve True si el usuario pertenece al grupo Medicos."""
         return self.request.user.groups.filter(name='Medicos').exists()
     
+    
+# Estudios views
+
+class EstudioList(LoginRequiredMixin, ListView):
+    model = models.Estudios
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        user = self.request.user
+        if user.groups.filter(name='Medicos').exists():
+            return queryset
+        else:
+            return queryset.filter(paciente__paciente=user)
