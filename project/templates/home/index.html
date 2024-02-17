@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h1>Home</h1>
+{% endblock header %}
+
+
+{% block content %}
+
+    {% if request.user.is_superuser %}
+    <h1>Super user</h1>
+    {% elif request.user.is_staff %}
+    <h3>Staff<h2>
+    {% else %}
+    <h4>Paciente<h2>
+    {% endif %}
+
+    <a href="{% url 'home:logout' %}">logout</a>
+    
+    <div class="d-grid gap-3 mt-4">
+        <a href="{% url 'historias_clinicas:index' %}" class="btn btn-info">ir a Historias Clinicas</a>
+    </div>
+{% endblock content %}
+

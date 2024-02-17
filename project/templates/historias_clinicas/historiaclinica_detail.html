@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="display-5 mb-4">Historia Clinica</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Paciente:</strong> {{ object.paciente.username }}</li>
+        <li class="list-group-item"><strong>Medico:</strong> {{ object.medico_tratante.username }}</li>
+        <li class="list-group-item"><strong>Fecha de creacion:</strong> {{ object.fecha_creacion }}</li>
+        <li class="list-group-item"><strong>Antecedentes:</strong> {{ object.antecedentes }}</li>
+        <li class="list-group-item"><strong>Alergias:</strong> {{ object.alergias }}</li>
+        <li class="list-group-item"><strong>Observaciones:</strong> {{ object.observaciones }}</li>
+    </ul>
+    <div class="d-grid gap-3 mt-4">
+        <a href="{% url 'historias_clinicas:index' %}" class="btn btn-info">Volver atrás</a>
+    </div>
+{% endblock content %}
