@@ -39,13 +39,11 @@ INSTALLED_APPS = [
     
     # Apps propias
     'home.apps.HomeConfig',
-<<<<<<< HEAD
+
     'users.apps.UsersConfig',
     'medical_history.apps.MedicalHistoryConfig',
     'studies_medicals.apps.StudiesMedicalsConfig',
-=======
-    'historias_clinicas.apps.HistoriasClinicasConfig'
->>>>>>> f52097cce55783dc35dcd98d0212a8909538b403
+
 ]
 
 MIDDLEWARE = [
@@ -136,8 +134,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-<<<<<<< HEAD
 AUTH_USER_MODEL ='users.User'
-=======
-AUTH_USER_MODEL ='home.User'
->>>>>>> f52097cce55783dc35dcd98d0212a8909538b403
+

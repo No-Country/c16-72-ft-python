@@ -7,6 +7,8 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 
+from studies_medicals.models import StudiesMedicals
+
 
 
 class IndexView(TemplateView):
@@ -19,12 +21,17 @@ class IndexView(TemplateView):
         try:
             medical_history = models.MedicalHistory.objects.get(patient=user)
             context['medical_history'] = medical_history
+            studies_medicals = StudiesMedicals.objects.filter(patient=medical_history)
+            if studies_medicals:
+                context['studies_medicals'] = True
         except models.MedicalHistory.DoesNotExist:
             context['medical_history'] = None
+        except StudiesMedicals.DoesNotExist:
+            context['studies_medicals'] = False
 
         context['is_patient'] = user.groups.filter(name='Patients').exists()
 
-        context['is_medical'] = user.groups.filter(name='Medicals').exists()
+        context['is_medical'] = user.groups.filter(name='Medical').exists()
         
         return context
  

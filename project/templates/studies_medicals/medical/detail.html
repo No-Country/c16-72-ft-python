@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 class="display-5 mb-4"><strong>Paciente</strong>{{ studie_medical.patient }}</h2>
+
+    <ul class="list-group">
+        <li class="list-group-item"><strong>Nombre:</strong> {{ studie_medical.name }}</li>
+        <li class="list-group-item"><strong>Medico:</strong> Dr.{{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</li>
+        <li class="list-group-item"><strong>Tipo Estudio:</strong> {{ studie_medical.type_studie }}</li>
+        <li class="list-group-item"><strong>Reportes:</strong> {{ studie_medical.report }}</li>
+        <li class="list-group-item"><strong>Fecha:</strong> {{ studie_medical.date_joined }}</li>
+    </ul>
+    <div class="d-grid gap-3 mt-4">
+        <a href="{% url 'medical_history:index' %}" class="btn btn-info">Volver atrás</a>
+    </div>
+{% endblock content %}

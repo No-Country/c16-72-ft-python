@@ -12,7 +12,7 @@ class MedicalHistory(models.Model):
     observations = models.TextField(null=True, blank=True)
     
     def __str__(self):
-        return f'{self.patient.name}'
+        return f'{self.patient.name} {self.patient.last_name}'
 
     def clean(self):
         if not self.patient.groups.filter(name='Patients').exists():

@@ -10,12 +10,22 @@
         {% if medical_history %}
         <div class="d-grid gap-3">
             <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-primary">Ver mi Historia Clinica</a><br>
-            <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver mis Estudios</a><br>
         </div>
+
+
+        {% if studies_medicals %}
+            <div class="d-grid gap-3">
+                <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver mis estudios</a><br>
+            </div>
+        {% else %}
+            <p class="fs-4 fst-italic">No hay estudios para este paciente</p>
+        {% endif %}
+
         {% else %}
         <p class="fs-4 fst-italic">No hay registros de Historia Clinica para este paciente</p>
         {% endif %}
     {% endif %}
+
 
     {% if is_medico or user.is_staff %}
         <h2>Medico: {{ user.name }} {{ user.last_name }}</h2>
@@ -26,7 +36,7 @@
         </div>
         <div class="d-grid gap-3">
             <h2 class="display-5"> Estudios</h2>
-            <a href="" class="btn btn-primary">Crear Estudio</a> 
+            <a href="{% url 'studies_medicals:studiesmedicals_create' %}" class="btn btn-primary">Crear Estudio</a> 
             <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver Estudios</a> <br>
         </div>
     {% endif %}
