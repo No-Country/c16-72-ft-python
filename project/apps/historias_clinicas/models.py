@@ -13,7 +13,7 @@ class HistoriaClinica(models.Model):
     observaciones = models.TextField(null=True, blank=True)
     
     def __str__(self):
-        return self.paciente.username
+        return f"{self.paciente.name} - {self.paciente.last_name}"
 
     def clean(self):
         if not self.paciente.groups.filter(name='Pacientes').exists():
@@ -43,7 +43,3 @@ class Estudios(models.Model):
     def __str__(self):
         return self.nombre
     
-    def clean(self):
-        if not self.medico_solicitante.groups.filter(name='Medicos').exists():
-            raise ValidationError("El médico emisor debe ser parte del grupo 'Médicos'.")
-        super().clean()
