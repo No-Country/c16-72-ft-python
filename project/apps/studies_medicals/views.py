@@ -112,7 +112,7 @@ class UpdateStudieMedical(View):
                 try:
                     studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
                     medical_history = studie_medical.patient
-                    form = StudieMedicalForm(request.POST or Noen, request.FILES, instance=studie_medical, initial={'dni_patient' : medical_history.patient})
+                    form = StudieMedicalForm(request.POST or None, request.FILES, instance=studie_medical, initial={'dni_patient' : medical_history.patient})
                 except:
                     return render(request, 'components/404.html')
                 
