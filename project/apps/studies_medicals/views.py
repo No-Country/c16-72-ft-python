@@ -64,7 +64,7 @@ class CreateStudieMedical(View):
     def post(self, request, *args, **kwargs):   
         if request.user.groups.filter(name='Medicals').exists():     
             if request.method == "POST":
-                form = StudieMedicalForm(request.POST or None)
+                form = StudieMedicalForm(request.POST or None,  request.FILES)
             if form.is_valid():
                 
                 dni_patient = form.cleaned_data.get('dni_patient')
@@ -112,7 +112,7 @@ class UpdateStudieMedical(View):
                 try:
                     studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
                     medical_history = studie_medical.patient
-                    form = StudieMedicalForm(request.POST or None, instance=studie_medical, initial={'dni_patient' : medical_history.patient})
+                    form = StudieMedicalForm(request.POST or Noen, request.FILES, instance=studie_medical, initial={'dni_patient' : medical_history.patient})
                 except:
                     return render(request, 'components/404.html')
                 
