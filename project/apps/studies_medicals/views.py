@@ -1,11 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.contrib import messages
+from django.http import HttpResponse
 
 from .models import StudiesMedicals
 from users.models import User
 from .forms import StudieMedicalForm
 from medical_history.models import MedicalHistory
+from .utils import render_to_pdf
 
 # Create your views here.
 
@@ -36,6 +38,26 @@ class ListStudiesMedicalsView(View):
         else:
             return render(request, 'components/404.html')
 
+class StudieMedicalPatientPDF(View):
+    def get(self, request, pk, *args, **kwargs):
+        if request.user.groups.filter(name='Patients').exists():
+            try:
+                studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                context = {'studie_medical': studie_medical}
+                pdf = render_to_pdf('studies_medicals/patient/studie_medical_pdf_patient.html', context)
+                if pdf:
+                    response = HttpResponse(pdf, content_type='application/pdf')
+                    filename = f'estudio_medico_{studie_medical.pk}.pdf'
+                    content = f'attachment; filename="{filename}"'
+                    response['Content-Disposition'] = content
+                    return response
+                else:
+                    return HttpResponse("Error al generar el PDF", status=500)
+            except Exception as e:
+                return render(request, 'components/404.html')
+        else:
+            return render(request, 'components/404.html')
+        
 class DetailStudieMedicalView(View):
     def get(self, request, pk, *args, **kwargs):
         context = {}
