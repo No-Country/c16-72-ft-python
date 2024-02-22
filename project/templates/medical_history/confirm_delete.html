@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="fw-bolder display-5 mb-4">¿Confirmas eliminar "{{ object }}"?</h2>
+    <h2 class="fw-bolder display-5 mb-4">¿Confirmas eliminar "{{ object.patient.name }}"?</h2>
 
     <form method="post">
         {% csrf_token %}
@@ -10,6 +10,6 @@
         </div>
     </form>
     <div class="d-grid gap-3 mt-4">
-        <a href="{% url 'historias_clinicas:historiaclinica_list' %}" class="btn btn-info">Volver atrás</a>
+        <a href="{% url 'medical_history:medicalhistory_list' %}" class="btn btn-info">Volver atrás</a>
     </div>
 {% endblock content %}

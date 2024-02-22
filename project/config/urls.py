@@ -7,7 +7,10 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(('home.urls', 'home'))),
-    path('clinica/', include(('historias_clinicas.urls', 'historias_clinicas')))
+    
+    path('users/', include(('users.urls', 'users'))),
+    path('clinic/', include(('medical_history.urls', 'medical_history'))),
+    path('clinic/studies/', include(('studies_medicals.urls', 'studies_medicals')))
 ]
 
 # Valido en entorno de desarrollo: DEBUG= True

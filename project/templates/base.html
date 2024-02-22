@@ -15,10 +15,15 @@
 	<body>
 		<header>
 			{% block header %}
+				{% include 'components/navbar.html' %}
             {% endblock header%}
 		</header>
+
+		{% block messages %}
+			{% include 'components/alerts.html' %}
+		{% endblock messages %}
 	
-		<main>
+		<main class="container">
           {% block content %}
 		  {% endblock content%}
 		</main>
