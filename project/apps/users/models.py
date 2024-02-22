@@ -60,7 +60,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 @receiver(post_save, sender=User)
 def add_user_to_group(sender, instance, created, **kwargs):
-    if created:
-        group = Group.objects.get(name="Patients")
+     if created and not instance.is_superuser:
+        try:
+            group = Group.objects.get(name="Patients")
+        except Group.DoesNotExist:
+            group = Group.objects.create(name="Patients")
         group.user_set.add(instance)
 
