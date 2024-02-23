@@ -1,16 +1,24 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
-    <h2 class="display-5">Historia Clinica</h2>
-    
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <div class="d-grid gap-3">
-            <button type="submi" class="btn btn-success">Guardar</button>
+    <div class="container p-5">
+        <h2 class="display-5">Historia Clinica</h2>
+        
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field|add_class:"form-control" }}
+                </div>
+            {% endfor %}
+            <div class="d-grid gap-3 mt-4">
+                <button type="submit" class="btn btn-success">Guardar</button>
+            </div>
+        </form>
+        <div class="d-grid gap-3 mt-4">
+            <a href="{% url 'medical_history:index' %}" class="btn btn-info">Volver atrás</a>
         </div>
-    </form>
-    <div class="d-grid gap-3 mt-4">
-        <a href="{% url 'medical_history:index' %}" class="btn btn-info">Volver atrás</a>
     </div>
 {% endblock content %}
