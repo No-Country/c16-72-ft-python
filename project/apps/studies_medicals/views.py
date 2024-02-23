@@ -21,7 +21,7 @@ class ListStudiesMedicalsView(View):
             if studies_medicals:
                 context['studies_medicals'] = studies_medicals
             else:
-                messages.success(self.request, "Aun no tines examnes medicos asosciados", extra_tags="alert alert-danger")
+                messages.success(self.request, "Aun no tines examenes medicos asosciados", extra_tags="alert alert-danger")
 
             return render(request, 'studies_medicals/medical/list.html', context)
         
@@ -78,7 +78,7 @@ class CreateStudieMedical(View):
         if request.user.groups.filter(name='Medicals').exists():  
             form = StudieMedicalForm()
             context = {'form' : form}
-            return render(request, 'studies_medicals/medical/create.html', context)
+            return render(request, 'studies_medicals/medical/form.html', context)
 
         else:
             return render(request, 'components/404.html')
@@ -108,7 +108,7 @@ class CreateStudieMedical(View):
                     messages.success(request, "El paciente no tiene un hisroial medico asociado", extra_tags="alert alert-danger")
               
             context = {'form' : form}
-            return render(request, 'studies_medicals/medical/create.html', context)
+            return render(request, 'studies_medicals/medical/form.html', context)
         
         else: 
             return render(request, 'components/404.html')
@@ -121,7 +121,7 @@ class UpdateStudieMedical(View):
                 medical_history = studie_medical.patient
                 form = StudieMedicalForm(instance=studie_medical, initial={'dni_patient' : medical_history.patient})
                 context = {'form' : form}
-                return render(request, 'studies_medicals/medical/update.html', context)
+                return render(request, 'studies_medicals/medical/form.html', context)
             except:
                 return render(request, 'components/404.html')
         
@@ -159,7 +159,7 @@ class UpdateStudieMedical(View):
                     messages.success(request, "El paciente no tiene un hisroial medico asociado", extra_tags="alert alert-danger")
               
             context = {'form' : form}
-            return render(request, 'studies_medicals/medical/update.html', context)
+            return render(request, 'studies_medicals/medical/form.html', context)
         
         else: 
             return render(request, 'components/404.html')
