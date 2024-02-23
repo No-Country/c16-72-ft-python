@@ -9,6 +9,8 @@ from django.contrib import messages
 
 from studies_medicals.models import StudiesMedicals
 
+from django.db.models import Q
+
 
 
 class IndexView(TemplateView):
@@ -40,9 +42,23 @@ class MedicalHistoryDetail(LoginRequiredMixin, DetailView):
     def test_func(self):
         return is_medical(self.request.user)
         
+from django.db.models import Q
+
 class MedicalHistoryList(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = models.MedicalHistory
-  
+
+    def get_queryset(self):
+        """Filtra todas las historias medicas que contengan el texto ingresado en DNI o apellido."""
+        query = self.request.GET.get("consult")
+        
+        if query:
+            object_list = models.MedicalHistory.objects.filter(
+                Q(patient__dni__icontains=query) | Q(patient__name__icontains=query) | Q(patient__last_name__icontains=query) 
+            )
+        else:
+            object_list = models.MedicalHistory.objects.all()
+        return object_list
+    
     def test_func(self):
         return is_medical(self.request.user)
     
