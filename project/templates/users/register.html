@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
+{% load widget_tweaks %}
 
 {% block content %}
-
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Register</button>
-</form>
-
+    <div class="container p-5">
+        <h2 class="display-5 text-center">Register</h2>
+        
+        <form method="post" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field|add_class:"form-control" }}
+                </div>
+            {% endfor %}
+            <div class="d-grid gap-3 mt-4">
+                <button type="submit" class="btn btn-success">Register</button>
+            </div>
+        </form>
+        <div class="d-grid gap-3 mt-4">
+            <a href="{% url 'home:home' %}" class="btn btn-info">Volver atrás</a>
+        </div>
+    </div>
 {% endblock content %}
