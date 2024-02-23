@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="fw-bolder display-5 mb-4">¿Confirmas eliminar "{{ object.patient.name }}"?</h2>
+    <h2 class="fw-bolder display-5 mb-4">¿Confirmas eliminar la Historia Clinica DNI: {{ object.patient.dni }}?</h2>
 
     <form method="post">
         {% csrf_token %}
