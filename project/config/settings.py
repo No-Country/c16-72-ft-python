@@ -36,13 +36,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Apps propias
+    # My apps
     'home.apps.HomeConfig',
-
     'users.apps.UsersConfig',
     'medical_history.apps.MedicalHistoryConfig',
     'studies_medicals.apps.StudiesMedicalsConfig',
+    # 3rd party apps
+    'widget_tweaks',
 
 ]
 

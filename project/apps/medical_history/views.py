@@ -9,6 +9,8 @@ from django.contrib import messages
 
 from studies_medicals.models import StudiesMedicals
 
+from django.db.models import Q
+
 
 
 class IndexView(TemplateView):
@@ -29,22 +31,36 @@ class IndexView(TemplateView):
         except StudiesMedicals.DoesNotExist:
             context['studies_medicals'] = False
 
-        context['is_patient'] = user.groups.filter(name='Patients').exists()
+        context['is_patient'] = is_patient(user)
 
-        context['is_medical'] = user.groups.filter(name='Medical').exists()
+        context['is_medical'] = is_medical(user)
         
         return context
  
 class MedicalHistoryDetail(LoginRequiredMixin, DetailView):
     model = models.MedicalHistory
     def test_func(self):
-        return medico_or_superuser(self.request.user)
+        return is_medical(self.request.user)
         
+from django.db.models import Q
+
 class MedicalHistoryList(LoginRequiredMixin, UserPassesTestMixin, ListView):
     model = models.MedicalHistory
-  
+
+    def get_queryset(self):
+        """Filtra todas las historias medicas que contengan el texto ingresado en DNI o apellido."""
+        query = self.request.GET.get("consult")
+        
+        if query:
+            object_list = models.MedicalHistory.objects.filter(
+                Q(patient__dni__icontains=query) | Q(patient__name__icontains=query) | Q(patient__last_name__icontains=query) 
+            )
+        else:
+            object_list = models.MedicalHistory.objects.all()
+        return object_list
+    
     def test_func(self):
-        return medico_or_superuser(self.request.user)
+        return is_medical(self.request.user)
     
 class MedicalHistoryCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = models.MedicalHistory
@@ -56,7 +72,7 @@ class MedicalHistoryCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateVi
         messages.success(self.request, "Historia Clinica creada correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     def test_func(self):
-        return medico_or_superuser(self.request.user)
+        return is_medical(self.request.user)
     
 class MedicalHistoryDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = models.MedicalHistory
@@ -68,7 +84,7 @@ class MedicalHistoryDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return super().get_success_url()
     
     def test_func(self):
-        return medico_or_superuser(self.request.user)
+        return is_medical(self.request.user)
     
     
 class MedicalHistoryUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -81,9 +97,15 @@ class MedicalHistoryUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         return super().form_valid(form)
     
     def test_func(self):
-        return medico_or_superuser(self.request.user)
+        return is_medical(self.request.user)
+    
 
-
-def medico_or_superuser(user):
+# _______________ Funciones auxiliares _______________
+    
+def is_medical(user):
     """Devuelve True si el usuario pertenece al grupo Medicos o es un superusuario."""
     return user.groups.filter(name='Medicals').exists() or user.is_staff
+
+def is_patient(user):
+    """Devuelve True si el usuario pertenece al grupo Pacientes."""
+    return user.groups.filter(name="Patients").exists()

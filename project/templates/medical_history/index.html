@@ -4,46 +4,48 @@
 
 
 {% block content %}
+    <div class="container p-5">
 
-    {% if is_patient %}
-        <h2>Paciente: {{ user.name }} {{ user.last_name }}</h2>
-        {% if medical_history %}
-        <div class="d-grid gap-3">
-            <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-primary">Ver mi Historia Clinica</a><br>
-        </div>
-
-
-        {% if studies_medicals %}
+        {% if is_patient %}
+            <h2>Paciente: {{ user.name }} {{ user.last_name }}</h2>
+            {% if medical_history %}
             <div class="d-grid gap-3">
-                <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver mis estudios</a><br>
+                <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-primary">Ver mi Historia Clinica</a><br>
             </div>
-        {% else %}
-            <p class="fs-4 fst-italic">No hay estudios para este paciente</p>
+
+
+            {% if studies_medicals %}
+                <div class="d-grid gap-3">
+                    <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver mis estudios</a><br>
+                </div>
+            {% else %}
+                <p class="fs-4 fst-italic text-center">No hay estudios para este paciente</p>
+            {% endif %}
+
+            {% else %}
+            <p class="fs-4 fst-italic text-center">No hay registros de Historia Clinica para este paciente</p>
+            {% endif %}
         {% endif %}
 
-        {% else %}
-        <p class="fs-4 fst-italic">No hay registros de Historia Clinica para este paciente</p>
+
+        {% if is_medico or user.is_staff %}
+            <h2>Medico: {{ user.name }} {{ user.last_name }}</h2>
+            <div class="d-grid gap-3">
+                <h2 class="display-5 text-center"> Historia Clinica</h2>
+                <a href="{% url 'medical_history:medicalhistory_create' %}" class="btn btn-primary">Crear Historia Clinica</a> 
+                <a href="{% url 'medical_history:medicalhistory_list' %}" class="btn btn-primary">Ver Historias Clinicas</a> <br>
+            </div>
+            <div class="d-grid gap-3">
+                <h2 class="display-5 text-center"> Estudios</h2>
+                <a href="{% url 'studies_medicals:studiesmedicals_create' %}" class="btn btn-primary">Crear Estudio</a> 
+                <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver Estudios</a> <br>
+            </div>
         {% endif %}
-    {% endif %}
 
 
-    {% if is_medico or user.is_staff %}
-        <h2>Medico: {{ user.name }} {{ user.last_name }}</h2>
-        <div class="d-grid gap-3">
-            <h2 class="display-5"> Historia Clinica</h2>
-            <a href="{% url 'medical_history:medicalhistory_create' %}" class="btn btn-primary">Crear Historia Clinica</a> 
-            <a href="{% url 'medical_history:medicalhistory_list' %}" class="btn btn-primary">Ver Historias Clinicas</a> <br>
+
+        <div class="d-grid gap-3 mt-4">
+            <a href="" class="btn btn-info">Volver atrás</a>
         </div>
-        <div class="d-grid gap-3">
-            <h2 class="display-5"> Estudios</h2>
-            <a href="{% url 'studies_medicals:studiesmedicals_create' %}" class="btn btn-primary">Crear Estudio</a> 
-            <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver Estudios</a> <br>
-        </div>
-    {% endif %}
-
-
-
-    <div class="d-grid gap-3 mt-4">
-        <a href="" class="btn btn-info">Volver atrás</a>
     </div>
 {% endblock content %}
