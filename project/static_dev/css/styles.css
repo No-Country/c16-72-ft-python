@@ -1,0 +1,7 @@
+@media (max-width: 767px) {
+    .img-cropped img {
+      width: 120px; /* Ancho deseado para la imagen recortada en dispositivos móviles */
+      height: auto;
+    }
+  }
+  
