@@ -7,7 +7,7 @@ from .models import StudiesMedicals
 from users.models import User
 from .forms import StudieMedicalForm
 from medical_history.models import MedicalHistory
-from .utils import render_to_pdf
+from .utils import render_to_pdf, get_rol_user
 
 # Create your views here.
 
@@ -15,7 +15,7 @@ class ListStudiesMedicalsView(View):
     def get(self, request, *args, **kwargs):
         context = {}
         
-        if request.user.groups.filter(name='Medicals').exists():
+        if get_rol_user(request.user, 'Medicals'):
             studies_medicals = StudiesMedicals.objects.filter(medical=request.user)
             
             if studies_medicals:
@@ -25,7 +25,7 @@ class ListStudiesMedicalsView(View):
 
             return render(request, 'studies_medicals/medical/list.html', context)
         
-        if request.user.groups.filter(name='Patients').exists():
+        if get_rol_user(request.user, 'Patients'):
             try:
                 medical_history = MedicalHistory.objects.get(patient=request.user)
                 studies_patients = StudiesMedicals.objects.filter(patient=medical_history)  
@@ -40,7 +40,7 @@ class ListStudiesMedicalsView(View):
 
 class StudieMedicalPatientPDF(View):
     def get(self, request, pk, *args, **kwargs):
-        if request.user.groups.filter(name='Patients').exists():
+        if get_rol_user(request.user, 'Patients'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
                 context = {'studie_medical': studie_medical}
@@ -62,7 +62,7 @@ class DetailStudieMedicalView(View):
     def get(self, request, pk, *args, **kwargs):
         context = {}
         
-        if request.user.groups.filter(name='Medicals').exists():
+        if get_rol_user(request.user, 'Medicals'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
                 context['studie_medical'] = studie_medical
@@ -75,7 +75,7 @@ class DetailStudieMedicalView(View):
              
 class CreateStudieMedical(View):
     def get(self, request, *args, **kwargs):
-        if request.user.groups.filter(name='Medicals').exists():  
+        if get_rol_user(request.user, 'Medicals'):  
             form = StudieMedicalForm()
             context = {'form' : form}
             return render(request, 'studies_medicals/medical/create.html', context)
@@ -84,7 +84,7 @@ class CreateStudieMedical(View):
             return render(request, 'components/404.html')
         
     def post(self, request, *args, **kwargs):   
-        if request.user.groups.filter(name='Medicals').exists():     
+        if get_rol_user(request.user, 'Medicals'):     
             if request.method == "POST":
                 form = StudieMedicalForm(request.POST or None,  request.FILES)
             if form.is_valid():
@@ -99,6 +99,7 @@ class CreateStudieMedical(View):
                     new_studie.medical = request.user
                     new_studie.patient = medical_history
                     new_studie.save()
+                    
                     messages.success(request, "El estudio medico se a creado", extra_tags="alert alert-success")
                     return redirect('medical_history:index')
                 
@@ -115,7 +116,7 @@ class CreateStudieMedical(View):
 
 class UpdateStudieMedical(View):
     def get(self, request, pk, *args, **kwargs):
-        if request.user.groups.filter(name='Medicals').exists():
+        if get_rol_user(request.user, 'Medicals'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
                 medical_history = studie_medical.patient
@@ -129,7 +130,7 @@ class UpdateStudieMedical(View):
             return render(request, 'components/404.html')
         
     def post(self, request, pk, *args, **kwargs):   
-        if request.user.groups.filter(name='Medicals').exists():     
+        if get_rol_user(request.user, 'Medicals'):  
             if request.method == "POST":
                 try:
                     studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
@@ -156,7 +157,7 @@ class UpdateStudieMedical(View):
                 except User.DoesNotExist:
                     messages.success(request, "El dni del paciente no existe", extra_tags="alert alert-danger")
                 except MedicalHistory.DoesNotExist:
-                    messages.success(request, "El paciente no tiene un hisroial medico asociado", extra_tags="alert alert-danger")
+                    messages.success(request, "El paciente no tiene un historial medico asociado", extra_tags="alert alert-danger")
               
             context = {'form' : form}
             return render(request, 'studies_medicals/medical/update.html', context)
@@ -165,7 +166,7 @@ class UpdateStudieMedical(View):
             return render(request, 'components/404.html')
 
 def delete_studieMedical_view(request, pk):
-    if request.user.groups.filter(name='Medicals').exists():
+    if get_rol_user(request.user, 'Medicals'):
         studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
         studie_medical.delete()
         messages.success(request, "El estudio medico se ha eliminado", extra_tags="alert alert-success")

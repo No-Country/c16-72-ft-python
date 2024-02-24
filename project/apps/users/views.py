@@ -12,11 +12,7 @@ from .models import User
 
 class RegisterView(View):
      def get(self, request, *args, **kwargs):
-        form = UserRegisterForm()
-        context = {
-            'form' : form
-        }
-        return render(request, 'users/register.html', context)
+        return render(request, 'users/register.html', context={ 'form': UserRegisterForm() })
     
      def post(self, request, *args, **kwargs):
          form = UserRegisterForm()
@@ -41,22 +37,14 @@ class RegisterView(View):
                 
                 except IntegrityError:
                     messages.warning(request, 'El DNI o el Email ya exiten', extra_tags="alert alert-danger")
-                    return render(request, 'users/register.html', context={
-                        'form' : UserRegisterForm,
-                    })
+                    return render(request, 'users/register.html', context={ 'form' : UserRegisterForm })
             else:
                 messages.warning(request, 'Las contrasenias no coinciden', extra_tags="alert alert-danger")
-                return render(request, 'users/register.html', context={
-                    'form' : UserRegisterForm,
-                })
+                return render(request, 'users/register.html', context={ 'form' : UserRegisterForm })
 
 class LoginView(View):
     def get(self, request, *args, **kwargs):
-        form = LoginForm()
-        context = {
-            'form' : form
-        }
-        return render(request, 'users/login.html', context)
+        return render(request, 'users/login.html', context = {'form' : LoginForm()})
     
     def post(self, request, *args, **kwargs):
         form = LoginForm()
@@ -68,9 +56,7 @@ class LoginView(View):
             
             if user is None:
                 messages.warning(request, 'Email o contrasenia incorrectos', extra_tags="alert alert-danger")
-                return render(request, 'users/login.html', context={
-                        'form' : form,
-                    })
+                return render(request, 'users/login.html', context={'form' : form })
             else:
                 login(request, user)
                 return redirect('medical_history:index')
