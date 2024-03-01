@@ -40,11 +40,19 @@ class CustomUserManager(UserManager):
         return self._create_user(email, password, **extra_fields)
 
 class User(AbstractBaseUser, PermissionsMixin):
+    
+    SEX_USER = (
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Other', 'Other'),
+    )
+    
     email = models.CharField(max_length=100, unique=True)
     dni = models.PositiveIntegerField(unique=True)
     name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    avatar = models.ImageField(default="avatar.png")
+    age = models.PositiveIntegerField(default=18)
+    sex = models.CharField(max_length=10, choices=SEX_USER, default='Male')
     date_joined = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
     objects = CustomUserManager()

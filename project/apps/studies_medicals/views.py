@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.contrib import messages
 from django.http import HttpResponse
+from django.db.models import Q
 
 from .models import StudiesMedicals
 from users.models import User
@@ -14,14 +15,24 @@ from .utils import render_to_pdf, get_rol_user
 class ListStudiesMedicalsView(View):
     def get(self, request, *args, **kwargs):
         context = {}
+        consult = request.GET.get("consult")
+        
+        array_studies = []
+        
         
         if get_rol_user(request.user, 'Medicals'):
             studies_medicals = StudiesMedicals.objects.filter(medical=request.user)
             
             if studies_medicals:
-                context['studies_medicals'] = studies_medicals
-            else:
-                messages.success(self.request, "Aun no tines examenes medicos asosciados", extra_tags="alert alert-danger")
+                if consult:
+                    
+                    studies_medicals = StudiesMedicals.objects.filter(
+                        Q(patient__patient__dni__icontains=consult) | Q(patient__patient__name__icontains=consult) | Q(patient__patient__last_name__icontains=consult), medical=request.user 
+                    )
+                    
+                    context['studies_medicals'] = studies_medicals
+                else:
+                    context['studies_medicals'] = studies_medicals
 
             return render(request, 'studies_medicals/medical/list.html', context)
         

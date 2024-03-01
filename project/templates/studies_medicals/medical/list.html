@@ -2,11 +2,18 @@
 
 {% block content %}
 
+<div class="py-lg-4 text-center">
+    <form action="{% url 'studies_medicals:studiesmedicals_list' %}" method="get">
+        <input name="consult" type="text" placeholder="Buscar por nombre o DNI...">
+    </form>
+</div>
+
+{% if studies_medicals %}
 <table class="table">
     <thead>
         <tr>
             <th>Paciente</th>
-            <th></th>
+            <th>DNI</th>
             <th></th>
             <th></th>
             
@@ -16,6 +23,7 @@
         {% for studie in studies_medicals %}
         <tr>
             <td>{{ studie.patient  }}</td>
+            <td>{{ studie.patient.patient.dni  }}</td>
     
             <td>
                 <a href="{% url  'studies_medicals:studiesmedicals_detail' studie.id %}" class="btn btn-secondary">Ver detalle</a>
@@ -31,6 +39,12 @@
         {% endfor %}
     </tbody>
 </table>
+{% else %}
+        <p class="fs-4 fst-italic">No hay registros ingresados</p>
+{% endif %}
+<div class="d-grid gap-3 mt-4">
+    <a href="{% url 'medical_history:index' %}" class="btn btn-info">Volver atrás</a>
+</div>
 
 
 {% endblock content %}
