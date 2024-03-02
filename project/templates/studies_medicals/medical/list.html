@@ -2,6 +2,8 @@
 
 {% block content %}
 
+{% include 'components/messages.html' %}
+
 <div class="py-lg-4 text-center">
     <form action="{% url 'studies_medicals:studiesmedicals_list' %}" method="get">
         <input name="consult" type="text" placeholder="Buscar por nombre o DNI...">
@@ -42,8 +44,13 @@
 {% else %}
         <p class="fs-4 fst-italic">No hay registros ingresados</p>
 {% endif %}
+
 <div class="d-grid gap-3 mt-4">
-    <a href="{% url 'medical_history:index' %}" class="btn btn-info">Volver atrás</a>
+{% if is_medical %}
+    <a href="{% url 'home:management' %}" class="btn btn-info">Volver atrás</a>
+{% else %}
+    <a href="{% url 'home:index' %}" class="btn btn-info">Volver atrás</a> 
+{% endif %}
 </div>
 
 

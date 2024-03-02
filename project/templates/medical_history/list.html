@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+    {% block nav %}
+    {% endblock nav %}
+    
+    {% include 'components/messages.html' %}
+    
+    {% block search %}{% endblock search %}
     {% if object_list %}
 
-        {% block search %}{% endblock search %}
  
         {% block list %}
             <div class="container">
@@ -25,6 +29,6 @@
         <p class="fs-4 fst-italic">No hay registros ingresados</p>
     {% endif %}
     <div class="d-grid gap-3 mt-4">
-        <a href="{% url 'medical_history:index' %}" class="btn btn-info">Volver atrás</a>
+        <a href="{% url 'home:management' %}" class="btn btn-info">Volver atrás</a>
     </div>
 {% endblock content %}
