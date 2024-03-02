@@ -5,6 +5,8 @@
     <div class="container p-5">
         <h2 class="display-5 text-center">Ingresar</h2>
         
+        {% include 'components/messages.html' %}
+        
         <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
             {% csrf_token %}
             
