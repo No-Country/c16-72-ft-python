@@ -3,33 +3,41 @@
 {% block content %}
 {% include 'components/messages.html' %}
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nombre</th>
-        <th scope="col">Paciente</th>
-        <th scope="col">Medico</th>
-        <th scope="col">Tipo Estudio</th>
-        <th scope="col">Reportes</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for studie in studies_patients %}
-      <tr>
-        <td>{{ studie.name }}</td>
-        <td>{{ studie.patient }}</td>
-        <td>{{ studie.medical.name }} {{ studie.medical.last_name }}</td>
-        <td>{{ studie.type_studie }}</td>
-        <td>{{ studie.report }}</td>
-        <td>{{ studie.date_joined }}</td>
-        <td>
-          <a href="{% url 'studies_medicals:studiesmedicals_pdf_patient' studie.id %}">Download<a/>
-        </td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+{% if studies_patients %}
+  <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Paciente</th>
+          <th scope="col">Medico</th>
+          <th scope="col">Tipo Estudio</th>
+          <th scope="col">Reportes</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for studie in studies_patients %}
+        <tr>
+          <td>{{ studie.name }}</td>
+          <td>{{ studie.patient }}</td>
+          <td>{{ studie.medical.name }} {{ studie.medical.last_name }}</td>
+          <td>{{ studie.type_studie }}</td>
+          <td>{{ studie.report }}</td>
+          <td>{{ studie.date_joined }}</td>
+          <td>
+            <a href="{% url 'studies_medicals:studiesmedicals_pdf_patient' studie.id %}">Download<a/>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="mt-2 fs-4 fst-italic">No hay registros ingresados</p>
+  {% endif %}
+
+  <div class="d-grid gap-3 mt-4">
+    <a href="#" class="btn btn-info return">Volver atrás</a>
+  </div>
 
 {% endblock content %}

@@ -17,9 +17,6 @@ class ListStudiesMedicalsView(View):
         context = {}
         consult = request.GET.get("consult")
         
-        array_studies = []
-        
-        
         if get_rol_user(request.user, 'Medicals'):
             studies_medicals = StudiesMedicals.objects.filter(medical=request.user)
             
@@ -42,7 +39,7 @@ class ListStudiesMedicalsView(View):
                 studies_patients = StudiesMedicals.objects.filter(patient=medical_history)  
                 context['studies_patients'] = studies_patients
             except:
-                messages.success(self.request, "Aun no tines examenes medicos asosciados", extra_tags="alert alert-danger")
+                messages.success(self.request, "Aun no tienes examenes medicos asosciados", extra_tags="alert alert-danger")
                 
             return render(request, 'studies_medicals/patient/list.html', context)
         
@@ -112,12 +109,12 @@ class CreateStudieMedical(View):
                     new_studie.save()
                     
                     messages.success(request, "El estudio medico se a creado", extra_tags="alert alert-success")
-                    return redirect('home:management')
+                    return redirect('studies_medicals:studiesmedicals_list')
                 
                 except User.DoesNotExist:
                     messages.success(request, "El dni del paciente no existe", extra_tags="alert alert-danger")
                 except MedicalHistory.DoesNotExist:
-                    messages.success(request, "El paciente no tiene un hisroial medico asociado", extra_tags="alert alert-danger")
+                    messages.success(request, "El paciente no tiene un historial medico asociado", extra_tags="alert alert-danger")
               
             context = {'form' : form}
             return render(request, 'studies_medicals/medical/form.html', context)
