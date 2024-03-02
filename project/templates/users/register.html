@@ -3,18 +3,31 @@
 
 {% block content %}
     <div class="container p-5">
-        <h2 class="display-5 text-center">Register</h2>
+        <h2 class="display-5 text-center">Registrarse</h2>
         
-        <form method="post" action="" enctype="multipart/form-data">
+        <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
             {% csrf_token %}
+            
             {% for field in form %}
                 <div class="form-group">
                     {{ field.label_tag }}
                     {{ field|add_class:"form-control" }}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger">{{ error }}</div>
+                    {% endfor %}
                 </div>
             {% endfor %}
-            <div class="d-grid gap-3 mt-4">
-                <button type="submit" class="btn btn-success">Register</button>
+    
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger mt-3">
+                    {% for error in form.non_field_errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            
+            <div class="d-grid gap-3 mt-5">
+                <button type="submit" class="btn btn-success">Registrarse</button>
             </div>
         </form>
         <div class="d-grid gap-3 mt-4">
