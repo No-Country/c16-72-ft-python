@@ -1,5 +1,19 @@
 {% extends "medical_history/list.html" %}
 
+{% block nav %}
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+            <i class="bi bi-house-door-fill text-primary"></i>
+            inicio</a>
+        </li>
+        <li class="breadcrumb-item text-primary"><a href="{% url 'home:management' %}">Administracion</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Historias clinicas</a></li>
+        
+    </ol>
+</nav>
+    
+{% endblock nav %}
 <h2 class="display-5 mb-4">Listado de Historias Clinicas</h2>
 
 {% block search %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+
+
+
+{% block content %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home:index' %}">inicio</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Administracion</li>
+        </ol>
+    </nav>
+
+    <h1>Administración</h1>
+
+    <div class="container p-5">
+        <div class="d-grid gap-3">
+            <h2 class="display-5 text-center"> Historia Clinica</h2>
+            <a href="{% url 'medical_history:medicalhistory_create' %}" class="btn btn-primary">Crear Historia Clinica</a>
+            <a href="{% url 'medical_history:medicalhistory_list' %}" class="btn btn-primary">Ver Historias Clinicas</a> <br>
+        </div>
+        <div class="d-grid gap-3">
+            <h2 class="display-5 text-center"> Estudios</h2>
+            <a href="{% url 'studies_medicals:studiesmedicals_create' %}" class="btn btn-primary">Crear Estudio</a> 
+            <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ver Estudios</a> <br>
+        </div>
+
+        <div class="d-grid gap-3 mt-4">
+            <a href="{% url 'home:index' %}" class="btn btn-info">Volver atrás</a>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,19 +1,100 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="display-5 mb-4 text-center">Historia Clinica</h2>
+    
+ {% if not is_medical %}
+     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+         <ol class="breadcrumb">
+             <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                 <i class="bi bi-house-door-fill text-primary"></i>
+                 inicio</a>
+             </li>
+             <li class="breadcrumb-item active" aria-current="page">Historial médico</li>
+         </ol>
+     </nav>
+ {% else %}
+     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+         <ol class="breadcrumb">
+             <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                 <i class="bi bi-house-door-fill text-primary"></i>
+                 inicio</a>
+             </li>
+             <li class="breadcrumb-item text-primary"><a href="{% url 'home:management' %}">Administracion</a></li>
+             <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historias clinicas</a></li>
+             <li class="breadcrumb-item active" aria-current="page">Detalle de Historia</li>
+         </ol>
+     </nav>
+ {% endif %}
+  <h2 class="display-5 mb-4 text-center">Historial médico</h2>
 
-    <ul class="list-group">
-        <li class="list-group-item"><strong>Paciente:</strong> {{ object.patient.name }} {{ object.patient.last_name }}</li>
-        <li class="list-group-item"><strong>Medico:</strong>Dr. {{ object.medical.name }} {{ object.medical.last_name }}</li>
-        <li class="list-group-item"><strong>Fecha de creacion:</strong> {{ object.date_joined }}</li>
-        <li class="list-group-item"><strong>Antecedentes:</strong> {{ object.history }}</li>
-        <li class="list-group-item"><strong>Sexo:</strong> {{ object.patient.sex }}</li>
-        <li class="list-group-item"><strong>Sexo:</strong> {{ object.patient.age }}</li>
-        <li class="list-group-item"><strong>Alergias:</strong> {{ object.allergies }}</li>
-        <li class="list-group-item"><strong>Observaciones:</strong> {{ object.observations }}</li>
-    </ul>
-    <div class="d-grid gap-3 mt-4">
-        <a href="{% url 'medical_history:index' %}" class="btn btn-info">Volver atrás</a>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Antecedentes</th>
+            <th scope="col">Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Paciente</td>
+            <td>{{ object.patient.name }} {{ object.patient.last_name }}</td>
+          </tr>
+          <tr>
+            <td>Sexo</td>
+            <td>{{ object.patient.sex }}</td>
+          </tr>
+          <tr>
+            <td>Edad</td>
+            <td>{{ object.patient.age }}</td>
+          </tr>
+          <tr>
+            <td>Médico</td>
+            <td>Dr. {{ object.medical.name }} {{ object.medical.last_name }}</td>
+          </tr>
+          <tr>
+            <td>Fecha de creación</td>
+            <td>{{ object.date_joined }}</td>
+          </tr>
+          <tr>
+            <td>Enfermedades Crónicas</td>
+            <td>{% if object.chronic_diseases %}{{ object.chronic_diseases }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Antecedentes Familiares</td>
+            <td>{% if object.family_history %}{{ object.family_history }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Cirugías</td>
+            <td>{% if object.surgeries %}{{ object.surgeries }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Alergias</td>
+            <td>{% if object.allergies %}{{ object.allergies }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Medicamentos</td>
+            <td>{% if object.medications %}{{ object.medications }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Vacunas</td>
+            <td>{% if object.vaccines %}{{ object.vaccines }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Hábitos</td>
+            <td>{% if object.habits %}{{ object.habits }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+          <tr>
+            <td>Observaciones</td>
+            <td>{% if object.observations %}{{ object.observations }}{% else %}Sin antecedentes{% endif %}</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="d-grid gap-3 mt-4">
+      {% if is_medical %}
+        <a href="{% url 'medical_history:medicalhistory_list' %}" class="btn btn-info">Volver atrás</a>
+      {% else %}
+        <a href="{% url 'home:index' %}" class="btn btn-info">Volver atrás</a>
+      {% endif %}
     </div>
 {% endblock content %}
+

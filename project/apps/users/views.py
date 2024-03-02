@@ -32,8 +32,9 @@ class RegisterView(View):
                     )
                     
                     user.save()
+                    messages.success(request, 'Usuario creado exitosamente', extra_tags="alert alert-success")
                     login(request, user)
-                    return redirect('medical_history:index')
+                    return redirect('home:index')
                 
                 except IntegrityError:
                     messages.warning(request, 'El DNI o el Email ya exiten', extra_tags="alert alert-danger")
@@ -59,10 +60,10 @@ class LoginView(View):
                 return render(request, 'users/login.html', context={'form' : form })
             else:
                 login(request, user)
-                return redirect('medical_history:index')
+                return redirect('home:index')
 
 
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
-        return redirect('users:login')
+        return redirect('home:index')

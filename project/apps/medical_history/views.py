@@ -7,38 +7,20 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib import messages
 
-from studies_medicals.models import StudiesMedicals
-
 from django.db.models import Q
 
 
-
-class IndexView(TemplateView):
-    template_name = 'medical_history/index.html'
+ 
+class MedicalHistoryDetail(LoginRequiredMixin, DetailView):
+    model = models.MedicalHistory
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         user = self.request.user
 
-        try:
-            medical_history = models.MedicalHistory.objects.get(patient=user)
-            context['medical_history'] = medical_history
-            studies_medicals = StudiesMedicals.objects.filter(patient=medical_history)
-            if studies_medicals:
-                context['studies_medicals'] = True
-        except models.MedicalHistory.DoesNotExist:
-            context['medical_history'] = None
-        except StudiesMedicals.DoesNotExist:
-            context['studies_medicals'] = False
-
-        context['is_patient'] = is_patient(user)
-
         context['is_medical'] = is_medical(user)
-        
         return context
- 
-class MedicalHistoryDetail(LoginRequiredMixin, DetailView):
-    model = models.MedicalHistory
+
     def test_func(self):
         return is_medical(self.request.user)
         

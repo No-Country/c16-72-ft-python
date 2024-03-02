@@ -1,10 +1,10 @@
 from django.urls import path
 from django.views.generic import TemplateView
-
-from .views import HomeView
+from . import views
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='home/index.html'), name='index'),
+    path('', views.IndexView.as_view(), name='index'),
+    path('management/', TemplateView.as_view(template_name='home/management.html'), name='management'),
     #urls ubi provisoria
     path('dashboard/', TemplateView.as_view(template_name='home/dashboard.html'), name='dashboard'),
     path('examenes/', TemplateView.as_view(template_name='examenes/index.html'), name='examenes'),
