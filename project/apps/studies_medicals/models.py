@@ -27,9 +27,3 @@ class StudiesMedicals(models.Model):
     
     def __str__(self):
         return self.name
-    
-    """ def clean(self):
-        if not self.medical.groups.filter(name='Medicals').exists():
-            raise ValidationError("El médico emisor debe ser parte del grupo 'Médicos'.")
-
-        super().clean() """

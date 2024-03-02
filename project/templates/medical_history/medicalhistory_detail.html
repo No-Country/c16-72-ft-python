@@ -8,6 +8,8 @@
         <li class="list-group-item"><strong>Medico:</strong>Dr. {{ object.medical.name }} {{ object.medical.last_name }}</li>
         <li class="list-group-item"><strong>Fecha de creacion:</strong> {{ object.date_joined }}</li>
         <li class="list-group-item"><strong>Antecedentes:</strong> {{ object.history }}</li>
+        <li class="list-group-item"><strong>Sexo:</strong> {{ object.patient.sex }}</li>
+        <li class="list-group-item"><strong>Sexo:</strong> {{ object.patient.age }}</li>
         <li class="list-group-item"><strong>Alergias:</strong> {{ object.allergies }}</li>
         <li class="list-group-item"><strong>Observaciones:</strong> {{ object.observations }}</li>
     </ul>
