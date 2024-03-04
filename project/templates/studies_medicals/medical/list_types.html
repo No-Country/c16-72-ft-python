@@ -4,6 +4,9 @@
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Examenes</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' patient.patient.id %}">{{ patient.patient }}</a></li>
+            <li class="breadcrumb-item">{{ type_studie.type_studie.name }}</li>
         </ol>
     </nav>
 

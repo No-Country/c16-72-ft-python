@@ -3,6 +3,14 @@
 {% block content %}
     {% include 'components/messages.html' %}
     
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' %}">{{ request.user.name }} {{ request.user.last_name }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_studies' pk_type=studie_medical.type_studie.id %}">{{ studie_medical.type_studie.name }}</a></li>
+            <li class="breadcrumb-item">Resultados</li>
+        </ol>
+    </nav>
 
     <h1 class="mt-2">Resultados</h1>
     <p>{{ studie_medical.type_studie }}</p>

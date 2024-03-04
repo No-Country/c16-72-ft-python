@@ -7,7 +7,10 @@
                 <i class="bi bi-house-door-fill text-primary"></i>
                 inicio</a>
             </li>
-            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Exámenes</a></li>         
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Exámenes</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' studie_medical.patient.id %}">{{ studie_medical.patient }}</a></li>   
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_studies' pk_patient=studie_medical.patient.id pk_type=studie_medical.type_studie.id %}">{{ studie_medical.type_studie.name }}</a></li>   
+            <li class="breadcrumb-item">Resultados</li>           
         </ol>
     </nav>
     {% include 'components/messages.html' %}

@@ -3,8 +3,16 @@
 {% block content %}
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Exámenes</li>
+            <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+            {% if is_medical %}
+                <li class="breadcrumb-item" aria-current="page"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Examenes</a></li>
+            
+            {% endif %}
+            {% if is_medical %}
+                <li class="breadcrumb-item">{{ patient.patient }}</li>
+            {% elif is_patient %}
+                <li class="breadcrumb-item active">{{ request.user.name }} {{ request.user.last_name }}</li>
+            {% endif %}
         </ol>
     </nav>
 

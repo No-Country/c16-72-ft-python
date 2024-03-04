@@ -7,14 +7,16 @@
         <li class="breadcrumb-item active" aria-current="page">Exámenes</li>
     </ol>
 </nav>
-<h2 class="display-5 mb-4 fw-medium">Exámenes</h2>
-{% include 'components/messages.html' %}
 
-<div class="py-lg-4 text-center">
-    <form action="" method="get">
-        <input name="consult" type="text" placeholder="Buscar por nombre o DNI...">
-    </form>
+<div class="d-flex justify-content-between">
+    <h2 class="display-5 mb-4 fw-medium">Exámenes</h2>
+    <div class="py-lg-4 text-center">
+        <form action="" method="get">
+            <input class="form-control" name="consult" type="text" placeholder="Buscar por nombre o DNI...">
+        </form>
+    </div>
 </div>
+{% include 'components/messages.html' %}
 
 {% if studies_medicals %}
 <table class="table table-striped">
@@ -64,7 +66,6 @@
         <p class="fs-4 fst-italic">No hay registros ingresados</p>
 {% endif %}
 
-</div>
 
 
 {% endblock content %}
