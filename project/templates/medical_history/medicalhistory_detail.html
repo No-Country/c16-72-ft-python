@@ -1,31 +1,41 @@
 {% extends 'base.html' %}
 
+
 {% block content %}
-    
+
  {% if not is_medical %}
-     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
          <ol class="breadcrumb">
              <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
                  <i class="bi bi-house-door-fill text-primary"></i>
                  inicio</a>
              </li>
-             <li class="breadcrumb-item active" aria-current="page">Historial médico</li>
+  
+             <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
          </ol>
      </nav>
  {% else %}
-     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
          <ol class="breadcrumb">
              <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
                  <i class="bi bi-house-door-fill text-primary"></i>
                  inicio</a>
              </li>
-             <li class="breadcrumb-item text-primary"><a href="{% url 'home:management' %}">Administracion</a></li>
-             <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historias clinicas</a></li>
-             <li class="breadcrumb-item active" aria-current="page">Detalle de Historia</li>
+             <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historiales médicos</a></li>
+             <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
          </ol>
      </nav>
  {% endif %}
-  <h2 class="display-5 mb-4 text-center">Historial médico</h2>
+  <h2 class="display-5 fw-medium">Historial médico</h2>
+     
+  <div class="containter">
+    <p>Actualización: {{object.date_joined}}</p>
+    <br>
+    <p>Paciente: {{ object.patient.name }} {{ object.patient.last_name }}</p>
+    <p>DNI: {{ object.patient.dni }}</p>
+    <p>Edad: {{ object.patient.age }}</p>
+    <P>Sexo: {{ object.patient.sex }}</P>
+  </div>
 
     <table class="table">
         <thead>
@@ -36,65 +46,67 @@
         </thead>
         <tbody>
           <tr>
-            <td>Paciente</td>
-            <td>{{ object.patient.name }} {{ object.patient.last_name }}</td>
-          </tr>
-          <tr>
-            <td>Sexo</td>
-            <td>{{ object.patient.sex }}</td>
-          </tr>
-          <tr>
-            <td>Edad</td>
-            <td>{{ object.patient.age }}</td>
-          </tr>
-          <tr>
-            <td>Médico</td>
-            <td>Dr. {{ object.medical.name }} {{ object.medical.last_name }}</td>
-          </tr>
-          <tr>
-            <td>Fecha de creación</td>
-            <td>{{ object.date_joined }}</td>
-          </tr>
-          <tr>
             <td>Enfermedades Crónicas</td>
-            <td>{% if object.chronic_diseases %}{{ object.chronic_diseases }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.chronic_diseases %}{{ object.chronic_diseases }}{% else %}-{% endif %}</td>
           </tr>
           <tr>
             <td>Antecedentes Familiares</td>
-            <td>{% if object.family_history %}{{ object.family_history }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.family_history %}{{ object.family_history }}{% else %}-{% endif %}</td>
           </tr>
           <tr>
             <td>Cirugías</td>
-            <td>{% if object.surgeries %}{{ object.surgeries }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.surgeries %}{{ object.surgeries }}{% else %}-{% endif %}</td>
           </tr>
           <tr>
             <td>Alergias</td>
-            <td>{% if object.allergies %}{{ object.allergies }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.allergies %}{{ object.allergies }}{% else %}-{% endif %}</td>
           </tr>
           <tr>
             <td>Medicamentos</td>
-            <td>{% if object.medications %}{{ object.medications }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.medications %}{{ object.medications }}{% else %}-{% endif %}</td>
           </tr>
           <tr>
             <td>Vacunas</td>
-            <td>{% if object.vaccines %}{{ object.vaccines }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.vaccines %}{{ object.vaccines }}{% else %}-{% endif %}</td>
           </tr>
           <tr>
             <td>Hábitos</td>
-            <td>{% if object.habits %}{{ object.habits }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.habits %}{{ object.habits }}{% else %}-{% endif %}</td>
           </tr>
           <tr>
             <td>Observaciones</td>
-            <td>{% if object.observations %}{{ object.observations }}{% else %}Sin antecedentes{% endif %}</td>
+            <td>{% if object.observations %}{{ object.observations }}{% else %}-{% endif %}</td>
           </tr>
         </tbody>
       </table>
-      <div class="d-grid gap-3 mt-4">
+    
       {% if is_medical %}
-        <a href="{% url 'medical_history:medicalhistory_list' %}" class="btn btn-info">Volver atrás</a>
-      {% else %}
-        <a href="{% url 'home:index' %}" class="btn btn-info">Volver atrás</a>
+        <div class="d-flex justify-content-end gap-2">
+          <a href="{% url 'medical_history:medicalhistory_update' object.id %}" class="btn btn-primary">Actualizar</a>
+          <a href="{% url 'medical_history:medicalhistory_delete' object.id %}" class="btn btn-danger"  data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
+        </div>
       {% endif %}
-    </div>
+
+
+        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ¿Estás seguro de que deseas eliminar esta historia médica?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <a href="{% url 'medical_history:medicalhistory_delete' object.id %}" class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 {% endblock content %}
 

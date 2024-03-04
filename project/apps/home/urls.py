@@ -2,9 +2,13 @@ from django.urls import path
 from django.views.generic import TemplateView
 from . import views
 
+from .utils import check_and_create_groups_and_models 
+
+check_and_create_groups_and_models()
+
+
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('management/', TemplateView.as_view(template_name='home/management.html'), name='management'),
     #urls ubi provisoria
     path('dashboard/', TemplateView.as_view(template_name='home/dashboard.html'), name='dashboard'),
     path('examenes/', TemplateView.as_view(template_name='examenes/index.html'), name='examenes'),

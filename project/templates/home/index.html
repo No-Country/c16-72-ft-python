@@ -77,11 +77,11 @@
                     <h5 class="card-title">Historial médico</h5>
                     <p class="card-text">Ver detalles historial medico.</p>
                     {% if not user.is_authenticated %}
-                        <p>Debe autenticarse para ver el historial</p>
+                        <p class="my-4">Debe autenticarse para ver su historial.</p>
                     {% endif %}
 
                     {% if is_patient and medical_history %}
-                        <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-primary">Ver mi historial</a>
+                        <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-primary my-4">Ver mi historial</a>
                     {% endif %}
 
                     {% if is_patient and not medical_history %}
@@ -89,7 +89,8 @@
                     {% endif %}
 
                     {% if is_medical %}
-                        <a href="{% url 'medical_history:medicalhistory_list' %}" class="btn btn-primary">Ir a historias medicas</a>
+                      <a href="{% url 'medical_history:medicalhistory_create' %}" class="btn btn-primary my-4">Crear historial</a><br>
+                      <a href="{% url 'medical_history:medicalhistory_list' %}" class="">Ver historiales</a>
                     {% endif %}
                 </div>  
             </div>
@@ -107,19 +108,20 @@
                     <p class="card-text">Ver resultados de exámenes realizados.</p>
 
                     {% if not user.is_authenticated %}
-                        <p>Debe autenticarse para ver sus exámenes</p>
+                        <p class="m-4">Debe autenticarse para ver sus exámenes</p>
                     {% endif %}
 
-                    {% if is_patient and studies_medicals %}
-                        <a href="{% url 'studies_medicals:studiesmedicals_type' %}" class="btn btn-primary">Ver mis exámenes</a>
+                    {% if is_patient and studies_medicals %}=======
+                        <a href="{% url 'studies_medicals:studiesmedicals_type' %}" class="btn btn-primary my-4">Ver mis exámenes</a>
                     {% endif %}
 
                     {% if is_patient and not studies_medicals %}
-                        <p>Usted aun no tiene exámenes</p> 
+                        <p class="m-4">Usted aun no tiene exámenes</p> 
                     {% endif %}
 
                     {% if is_medical %}
-                        <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary">Ir a historias exámenes</a>
+                      <a href="{% url 'studies_medicals:studiesmedicals_create' %}" class="btn btn-primary my-4">Crear exámen</a><br>
+                      <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="">Ver exámenes</a>
                     {% endif %}
                 </div>  
             </div>
