@@ -17,8 +17,8 @@ from .utils import render_to_pdf, get_rol_user, get_types_studies_user, get_user
 class ListTypeStudieMedical(LoginRequiredMixin, View):
     def get(self, request, pk=None, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):
-            patient = StudiesMedicals.objects.filter(patient=pk, medical=request.user).first()
-            studies_medicals = StudiesMedicals.objects.filter(medical=request.user, patient__id=pk).select_related('type_studie')
+            patient = StudiesMedicals.objects.filter(patient=pk).first()
+            studies_medicals = StudiesMedicals.objects.filter(patient__id=pk).select_related('type_studie')
             
             types_studies = get_types_studies_user(studies_medicals)
          
@@ -37,9 +37,9 @@ class ListStudiesMedicalsInTypesView(LoginRequiredMixin, View):
         context = {}
         
         if get_rol_user(request.user, 'Medicals'):
-            patient = StudiesMedicals.objects.filter(patient=pk_patient, medical=request.user, type_studie=pk_type).first()
-            type_studie = StudiesMedicals.objects.filter(type_studie=pk_type, medical=request.user, patient=pk_patient).first()
-            studies_medicals = StudiesMedicals.objects.filter(medical=request.user, type_studie=pk_type, patient=pk_patient)
+            patient = StudiesMedicals.objects.filter(patient=pk_patient, type_studie=pk_type).first()
+            type_studie = StudiesMedicals.objects.filter(type_studie=pk_type, patient=pk_patient).first()
+            studies_medicals = StudiesMedicals.objects.filter(type_studie=pk_type, patient=pk_patient)
             
             context['studies_medicals'] = studies_medicals
             
@@ -67,7 +67,7 @@ class ListStudiesMedicalsView(LoginRequiredMixin, View):
         consult = request.GET.get("consult")
         
         if get_rol_user(request.user, 'Medicals'):
-            studies_medicals = StudiesMedicals.objects.filter(medical=request.user)
+            studies_medicals = StudiesMedicals.objects.filter()
             
             if studies_medicals:
                 if consult:
@@ -176,7 +176,7 @@ class UpdateStudieMedical(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):
             try:
-                studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                studie_medical = get_object_or_404(StudiesMedicals, pk=pk, medical=request.user)
                 medical_history = studie_medical.patient
                 form = StudieMedicalForm(instance=studie_medical, initial={'dni_patient' : medical_history.patient})
                 context = {'form' : form}
@@ -191,7 +191,7 @@ class UpdateStudieMedical(LoginRequiredMixin, View):
         if get_rol_user(request.user, 'Medicals'):  
             if request.method == "POST":
                 try:
-                    studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                    studie_medical = get_object_or_404(StudiesMedicals, pk=pk, medical=request.user)
                     medical_history = studie_medical.patient
                     form = StudieMedicalForm(request.POST or None, request.FILES, instance=studie_medical, initial={'dni_patient' : medical_history.patient})
                 except:
@@ -232,9 +232,12 @@ def is_medical(user):
 @login_required
 def delete_studieMedical_view(request, pk):
     if get_rol_user(request.user, 'Medicals'):
-        studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
-        studie_medical.delete()
-        messages.success(request, "El estudio medico se ha eliminado", extra_tags="alert alert-success")
-        return redirect('studies_medicals:studiesmedicals_list')
+        try:
+            studie_medical = get_object_or_404(StudiesMedicals, pk=pk, medical=request.user)
+            studie_medical.delete()
+            messages.success(request, "El estudio medico se ha eliminado", extra_tags="alert alert-success")
+            return redirect('studies_medicals:studiesmedicals_list')
+        except:
+            return render(request, 'components/404.html')
     else:
         return render(request, 'components/404.html')
