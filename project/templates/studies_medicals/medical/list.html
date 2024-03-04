@@ -1,7 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Exámenes</li>
+    </ol>
+</nav>
+<h2 class="display-5 mb-4 fw-medium">Exámenes</h2>
 {% include 'components/messages.html' %}
 
 <div class="py-lg-4 text-center">
@@ -27,9 +33,6 @@
             <td>{{ studie.patient.patient.dni  }}</td>
     
             <td>
-                <a href="{% url 'studies_medicals:studiesmedicals_delete' studie.id %}" class="text-danger"   data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
-            </td>
-            <td>
                 <a href="{% url  'studies_medicals:studiesmedicals_type' studie.patient.id %}" class="link-primary">Ver detalle</a>
             </td>
             
@@ -45,7 +48,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        ¿Estás seguro de que deseas eliminar esta historia médica?
+                        ¿Estás seguro de que deseas eliminar este estudio?
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>

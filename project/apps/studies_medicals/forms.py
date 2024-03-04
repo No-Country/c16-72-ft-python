@@ -8,13 +8,24 @@ class StudieMedicalForm(forms.ModelForm):
     dni_patient = forms.CharField(
         widget=forms.TextInput(
             attrs={'class':''}),
-        required=True
+        required=True,
+        label='DNI del paciente'  # Label en español
     )
     
     class Meta:
         model = StudiesMedicals
-        fields = ['name','dni_patient', 'type_studie', 'result', 'report']
+        fields = ['dni_patient', 'type_studie','studie_name', 'result', 'report', 'observations']
         exclude = ['medical']
+        labels = {
+            'dni_patient': 'DNI del paciente',
+            'type_studie': 'Tipo de estudio',
+            'studie_name': 'Nombre del estudio',
+            'result': 'Resultado',
+            'report': 'Informe',
+            'observations': 'Observaciones'
+        }
+
+
 
 class StudiesMedicalAdminForm(forms.ModelForm):
     class Meta:
