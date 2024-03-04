@@ -112,7 +112,7 @@ class CreateStudieMedical(View):
                     new_studie.save()
                     
                     messages.success(request, "El estudio medico se a creado", extra_tags="alert alert-success")
-                    return redirect('home:management')
+                    return redirect('studies_medicals:studiesmedicals_list')
                 
                 except User.DoesNotExist:
                     messages.success(request, "El dni del paciente no existe", extra_tags="alert alert-danger")

@@ -9,6 +9,8 @@ from django.contrib import messages
 
 from django.db.models import Q
 
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.shortcuts import get_object_or_404, redirect
 
  
 class MedicalHistoryDetail(LoginRequiredMixin, DetailView):
@@ -51,22 +53,23 @@ class MedicalHistoryCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateVi
 
     def form_valid(self, form):
         form.instance.medical = self.request.user
-        messages.success(self.request, "Historia Clinica creada correctamente.", extra_tags="alert alert-success")
+        messages.success(self.request, "Historial creado correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     def test_func(self):
         return is_medical(self.request.user)
-    
+"""
 class MedicalHistoryDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = models.MedicalHistory
     template_name = "medical_history/confirm_delete.html"
     success_url = reverse_lazy("medical_history:medicalhistory_list")
 
     def get_success_url(self):
-            messages.success(self.request, "Historia Clinica eliminada correctamente.", extra_tags="alert alert-danger")
+            messages.success(self.request, "Historial eliminado correctamente.", extra_tags="alert alert-danger")
             return super().get_success_url()
-    
+     
     def test_func(self):
         return is_medical(self.request.user)
+"""
     
     
 class MedicalHistoryUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
@@ -75,7 +78,7 @@ class MedicalHistoryUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     form_class = forms.MedicalHistoryForm
 
     def form_valid(self, form):
-        messages.success(self.request, "Historia Clinica actualizada correctamente.", extra_tags="alert alert-success")
+        messages.success(self.request, "Historial actualizado correctamente.", extra_tags="alert alert-success")
         return super().form_valid(form)
     
     def test_func(self):
@@ -91,3 +94,15 @@ def is_medical(user):
 def is_patient(user):
     """Devuelve True si el usuario pertenece al grupo Pacientes."""
     return user.groups.filter(name="Patients").exists()
+
+
+
+
+@login_required
+@user_passes_test(is_medical)
+def delete_history_view(request, pk):
+
+    studie_medical = get_object_or_404(models.MedicalHistory, pk=pk)
+    studie_medical.delete()
+    messages.success(request, "Historial eliminado correctamente", extra_tags="alert alert-success")
+    return redirect('studies_medicals:studiesmedicals_list')

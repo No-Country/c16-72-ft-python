@@ -3,7 +3,30 @@
 
 {% block content %}
     <div class="container p-5">
-        <h2 class="display-5 text-center">Historia Clinica</h2>
+
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                    <i class="bi bi-house-door-fill text-primary"></i>
+                    inicio</a>
+                </li>
+                {% if request.path == '/clinic/history/create/' %}
+                    <li class="breadcrumb-item active" aria-current="page">Crear historial médico</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">Actualizar historial médico</a></li>
+                {% endif %}
+                
+            </ol>
+        </nav>
+
+        <h2 class="display-5 fw-medium">
+            {% if request.path == '/clinic/history/create/' %}
+            Crear 
+            {% else %}
+            Actualizar 
+            {% endif %}
+            historial médico
+        </h2>
         
         <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
             {% csrf_token %}
@@ -26,12 +49,9 @@
                 </div>
             {% endif %}
             
-            <div class="d-grid gap-3 mt-5">
-                <button type="submit" class="btn btn-success">Guardar</button>
+            <div class=" mt-5">
+                <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
         </form>
-        <div class="d-grid gap-3 mt-4">
-            <a href="{% url 'home:management' %}" class="btn btn-info">Volver atrás</a>
-        </div>
     </div>
 {% endblock content %}

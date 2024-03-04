@@ -4,7 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('management/', TemplateView.as_view(template_name='home/management.html'), name='management'),
     #urls ubi provisoria
     path('dashboard/', TemplateView.as_view(template_name='home/dashboard.html'), name='dashboard'),
     path('examenes/', TemplateView.as_view(template_name='examenes/index.html'), name='examenes'),
