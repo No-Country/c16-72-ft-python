@@ -111,8 +111,8 @@
                         <p class="m-4">Debe autenticarse para ver sus exámenes</p>
                     {% endif %}
 
-                    {% if is_patient and studies_medicals %}
-                        <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="btn btn-primary my-4">Ver mis exámenes</a>
+                    {% if is_patient and studies_medicals %}=======
+                        <a href="{% url 'studies_medicals:studiesmedicals_type' %}" class="btn btn-primary my-4">Ver mis exámenes</a>
                     {% endif %}
 
                     {% if is_patient and not studies_medicals %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Exámenes</li>
+        </ol>
+    </nav>
+
+    {% include 'components/messages.html' %}
+
+    
+    {% if studies_medicals %}
+    <h1>Paciente : {{ patient.patient }}</h1>
+    <p>{{ type_studie.type_studie.name }}</p>
+        {% for studie_medical in studies_medicals %}
+        <div class="card w-100 mt-3">
+            <div class="card-body">
+                <p class="card-text">Ultimo realizado  {{ studie_medical.date_joined }}</p>
+                <a href="{% url 'studies_medicals:studiesmedicals_detail' studie_medical.id %}" class="btn btn-primary">Ver Resultados</a>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="mt-2 fs-4 fst-italic">No hay registros ingresados</p>
+    {% endif %}
+
+
+{% endblock %}

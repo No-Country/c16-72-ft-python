@@ -27,6 +27,8 @@ class RegisterView(View):
                         email=request.POST['email'], 
                         dni=request.POST['dni'], 
                         name=request.POST['name'], 
+                        sex=request.POST['sex'],
+                        age=request.POST['age'],
                         last_name=request.POST['last_name'], 
                         password=request.POST['password1']
                     )

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Exámenes</li>
+        </ol>
+    </nav>
+
+    {% include 'components/messages.html' %}
+
+    
+    {% if types_studies %}
+    {% if is_medical %}
+        <h1>Paciente : {{ patient.patient }}</h1>
+    {% elif is_patient %}
+        <h1>Paciente : {{ request.user.name }} {{ request.user.last_name }}</h1>
+    {% endif %}
+    <p>Exámenes Medicos</p>
+        {% for type_studie in types_studies %}
+        <div class="card w-100 mt-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ type_studie.name }}</h5>
+                <p class="card-text">Ultimo realizado  {{ type_studie.date }}</p>
+                {% if is_medical %}
+                    <a href="{% url 'studies_medicals:studiesmedicals_studies' pk_patient=type_studie.patient.id pk_type=type_studie.id %}" class="btn btn-primary">Ver examenes</a>
+                {% elif is_patient %}
+                    <a href="{% url 'studies_medicals:studiesmedicals_studies' pk_type=type_studie.id %}" class="btn btn-primary">Ver examenes</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p class="mt-2 fs-4 fst-italic">No hay registros ingresados</p>
+    {% endif %}
+{% endblock %}

@@ -1,42 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h2 class="display-5 mb-4"><strong>Paciente</strong> {{ studie_medical.patient }}</h2>
+    {% include 'components/messages.html' %}
+    
+    <h1 class="mt-2">Resultados</h1>
+    <p>{{ studie_medical.type_studie }}</p>
 
-    <ul class="list-group">
-        <li class="list-group-item"><strong>Nombre:</strong> {{ studie_medical.name }}</li>
-        <li class="list-group-item"><strong>Medico:</strong> Dr.{{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</li>
-        <li class="list-group-item"><strong>Tipo Estudio:</strong> {{ studie_medical.type_studie }}</li>
-        <li class="list-group-item"><strong>Reportes:</strong> {{ studie_medical.report }}</li>
-        <li class="list-group-item"><strong>Sexo:</strong> {{ studie_medical.patient.patient.sex }}</li>
-        <li class="list-group-item"><strong>Edad:</strong> {{ studie_medical.patient.patient.age }}</li>
-        <li class="list-group-item"><strong>Fecha:</strong> {{ studie_medical.date_joined }}</li>
-    </ul>
-    {% if is_medical %}
-        <div class="d-flex justify-content-end gap-2">
-          <a href="{% url 'medical_history:medicalhistory_update' object.id %}" class="btn btn-primary">Actualizar</a>
-          <a href="{% url 'studies_medicals:studiesmedicals_delete' object.id %}" class="btn btn-danger"  data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
-        </div>
+    <p>Profesional solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
+    <p>Paciente: {{ studie_medical.patient }}</p>
+    <p>DNI: {{ studie_medical.patient.patient.dni }}</p>
+    <p>Edad: {{ studie_medical.patient.patient.age }}</p>
+    <p> Sexo: {{ studie_medical.patient.patient.sex }}</p>
+    <p>Toma muestra: {{ studie_medical.date_joined }}</p>
 
-        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        ¿Estás seguro de que deseas eliminar esta historia médica?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
-                        <a href="{% url 'studies_medicals:studiesmedicals_delete' object.id %}" class="btn btn-danger">Eliminar</a>
-                    </div>
+    {% if studie_medical.result %}
+        <img  class="img-fluid" src="{{ studie_medical.result.url }}" alt="imagen">
+    {% endif %}
+
+    <div class="mt-2 d-flex  justify-content-between">
+        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary">Actualizar</a>
+        <a class="btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
+    </div>
+
+    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmDeleteModalLabel">Confirmar Eliminación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Estás seguro de que deseas eliminar esta historia médica?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                    <a href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="btn btn-danger">Eliminar</a>
                 </div>
             </div>
         </div>
-      {% endif %}
-    
+    </div>
 {% endblock content %}

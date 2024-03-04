@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'components/messages.html' %}
+    
+
+    <h1 class="mt-2">Resultados</h1>
+    <p>{{ studie_medical.type_studie }}</p>
+
+    <p>Profesional solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
+    <p>Paciente: {{ studie_medical.patient }}</p>
+    <p>DNI: {{ studie_medical.patient.patient.dni }}</p>
+    <p>Edad: {{ studie_medical.patient.patient.age }}</p>
+    <p> Sexo: {{ studie_medical.patient.patient.sex }}</p>
+    <p>Toma muestra: {{ studie_medical.date_joined }}</p>
+
+    {% if studie_medical.result %}
+        <img  class="img-fluid" src="{{ studie_medical.result.url }}" alt="imagen">
+    {% endif %}
+
+    <div class="mt-2 d-flex  justify-content-between">
+        <a href="{% url 'studies_medicals:studiesmedicals_pdf_patient' studie_medical.id %}"  class="btn btn-primary">Descargar</a>
+    </div>
+{% endblock content %}
