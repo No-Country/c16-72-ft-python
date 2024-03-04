@@ -2,8 +2,11 @@ from django.contrib.auth.models import Group
 from studies_medicals.models import TypeStudieMedical
 
 def check_and_create_groups_and_models():
-    Group.objects.get_or_create(name='Medicals')
-    Group.objects.get_or_create(name='Patients')
+    try:
+        Group.objects.get_or_create(name='Medicals')
+        Group.objects.get_or_create(name='Patients')
+    except:
+        pass
    
     type_names = [
         "Exámenes de laboratorio",
@@ -16,6 +19,9 @@ def check_and_create_groups_and_models():
         "Pruebas de densidad ósea"
     ]
     for name in type_names:
-        TypeStudieMedical.objects.get_or_create(name=name)
+        try:
+            TypeStudieMedical.objects.get_or_create(name=name)
+        except:
+            pass
 
     

@@ -27,9 +27,6 @@
             <td>{{ studie.patient.patient.dni  }}</td>
     
             <td>
-                <a href="{% url 'studies_medicals:studiesmedicals_delete' studie.id %}" class="text-danger"   data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
-            </td>
-            <td>
                 <a href="{% url  'studies_medicals:studiesmedicals_type' studie.patient.id %}" class="link-primary">Ver detalle</a>
             </td>
             

@@ -3,6 +3,8 @@ from django.views import View
 from django.contrib import messages
 from django.http import HttpResponse
 from django.db.models import Q
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 from .models import StudiesMedicals, TypeStudieMedical
 from users.models import User
@@ -12,7 +14,7 @@ from .utils import render_to_pdf, get_rol_user, get_types_studies_user, get_user
 
 # Create your views here.
 
-class ListTypeStudieMedical(View):
+class ListTypeStudieMedical(LoginRequiredMixin, View):
     def get(self, request, pk=None, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):
             patient = StudiesMedicals.objects.filter(patient=pk, medical=request.user).first()
@@ -30,7 +32,7 @@ class ListTypeStudieMedical(View):
             
             return render(request, 'studies_medicals/types/list.html', {'types_studies' : type_studies})
 
-class ListStudiesMedicalsInTypesView(View):
+class ListStudiesMedicalsInTypesView(LoginRequiredMixin, View):
     def get(self, request, pk_patient=None, pk_type=None, *args, **kwargs):
         context = {}
         
@@ -59,7 +61,7 @@ class ListStudiesMedicalsInTypesView(View):
         else:
             return render(request, 'components/404.html')
 
-class ListStudiesMedicalsView(View):
+class ListStudiesMedicalsView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         context = {}
         consult = request.GET.get("consult")
@@ -86,7 +88,7 @@ class ListStudiesMedicalsView(View):
         else:
             return render(request, 'components/404.html')
 
-class StudieMedicalPatientPDF(View):
+class StudieMedicalPatientPDF(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         if get_rol_user(request.user, 'Patients'):
             try:
@@ -106,7 +108,7 @@ class StudieMedicalPatientPDF(View):
         else:
             return render(request, 'components/404.html')
 
-class DetailStudieMedicalView(View):
+class DetailStudieMedicalView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         context = {}
         
@@ -129,7 +131,7 @@ class DetailStudieMedicalView(View):
         else:
             return render(request, 'components/404.html')
              
-class CreateStudieMedical(View):
+class CreateStudieMedical(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):  
             form = StudieMedicalForm()
@@ -170,7 +172,7 @@ class CreateStudieMedical(View):
         else: 
             return render(request, 'components/404.html')
 
-class UpdateStudieMedical(View):
+class UpdateStudieMedical(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):
             try:
@@ -221,6 +223,13 @@ class UpdateStudieMedical(View):
         else: 
             return render(request, 'components/404.html')
 
+
+def is_medical(user):
+    """Devuelve True si el usuario pertenece al grupo Medicos o es un superusuario."""
+    return user.groups.filter(name='Medicals').exists() or user.is_staff
+
+
+@login_required
 def delete_studieMedical_view(request, pk):
     if get_rol_user(request.user, 'Medicals'):
         studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
