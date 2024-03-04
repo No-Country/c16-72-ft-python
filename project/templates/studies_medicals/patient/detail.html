@@ -19,7 +19,6 @@
     {% endif %}
 
     <div class="mt-2 d-flex  justify-content-between">
-        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary">Actualizar</a>
-        <a class="btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger">Eliminar</a>
+        <a href="{% url 'studies_medicals:studiesmedicals_pdf_patient' studie_medical.id %}"  class="btn btn-primary">Descargar</a>
     </div>
 {% endblock content %}
