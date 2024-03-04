@@ -15,6 +15,7 @@ class StudieMedicalForm(forms.ModelForm):
     class Meta:
         model = StudiesMedicals
         fields = ['dni_patient', 'type_studie','studie_name', 'result', 'report', 'observations']
+
         exclude = ['medical']
         labels = {
             'dni_patient': 'DNI del paciente',
