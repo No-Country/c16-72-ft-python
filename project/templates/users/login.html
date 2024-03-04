@@ -1,39 +1,50 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load static %}
 
 {% block content %}
-    <div class="container p-5">
-        <h2 class="display-5 text-center">Ingresar</h2>
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                <i class="bi bi-house-door-fill text-primary"></i>
+                inicio</a>
+            </li>
+
+            <li class="breadcrumb-item active" aria-current="page">Ingresar</li>
+        </ol>
+    </nav>
+    <div class="container">
         
         {% include 'components/messages.html' %}
+        <div class="px-0 px-md-5 mx-0 mx-md-5 mb-5">
+            <form method="post" action="" enctype="multipart/form-data" class="align-items-center px-3 px-md-5 mx-0 mx-lg-5 pb-4 form-login">
+                
+                {% csrf_token %}
+                <div class="d-flex justify-content-center py-2">
+                    <img src="{% static 'images/logos/logo_png.png' %}" style="width: 300px;" alt="Clinica Cousin">
+                </div>
+                
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field|add_class:"form-control" }}
+                        {% for error in field.errors %}
+                            <div class="alert alert-danger">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
         
-        <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
-            {% csrf_token %}
-            
-            {% for field in form %}
-                <div class="form-group">
-                    {{ field.label_tag }}
-                    {{ field|add_class:"form-control" }}
-                    {% for error in field.errors %}
-                        <div class="alert alert-danger">{{ error }}</div>
-                    {% endfor %}
-                </div>
-            {% endfor %}
-    
-            {% if form.non_field_errors %}
-                <div class="alert alert-danger mt-3">
-                    {% for error in form.non_field_errors %}
-                        {{ error }}
-                    {% endfor %}
-                </div>
-            {% endif %}
-            
-            <div class="d-grid gap-3 mt-5">
-                <button type="submit" class="btn btn-success">Ingresar</button>
-            </div>
-        </form>
-        <div class="d-grid gap-3 mt-4">
-            <a href="{% url 'home:index' %}" class="btn btn-info">Volver atrás</a>
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger mt-3">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                <button type="submit" class="btn btn-primary mt-4">Ingresar</button>
+
+            </form>
         </div>
     </div>
 {% endblock content %}
