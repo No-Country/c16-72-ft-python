@@ -3,7 +3,6 @@ from medical_history.models import MedicalHistory
 from studies_medicals.models import StudiesMedicals
 
 
-
 class IndexView(TemplateView):
     template_name = 'home/index.html'
 
