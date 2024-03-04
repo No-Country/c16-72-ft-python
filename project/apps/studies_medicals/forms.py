@@ -13,7 +13,7 @@ class StudieMedicalForm(forms.ModelForm):
     
     class Meta:
         model = StudiesMedicals
-        fields = ['dni_patient', 'type_studie', 'result', 'report', 'observations']
+        fields = ['name', 'dni_patient', 'type_studie', 'result', 'report', 'observations']
         exclude = ['medical']
 
 class StudiesMedicalAdminForm(forms.ModelForm):
