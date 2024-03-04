@@ -17,10 +17,10 @@ class TypeStudieMedical(models.Model):
     
     
 class StudiesMedicals(models.Model):
-    name = models.CharField(max_length=50, default="Examen")
     patient = models.ForeignKey(MedicalHistory, related_name='patient_history', on_delete=models.CASCADE, )
     medical = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='estudios_solicitados', on_delete=models.CASCADE)
     type_studie = models.ForeignKey(TypeStudieMedical, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, default="Examen")
     result = models.FileField(upload_to='estudios_resultados/', null=True, blank=True)
     report = models.TextField(null=True, blank=True)
     date_joined = models.DateTimeField(auto_now_add=True)

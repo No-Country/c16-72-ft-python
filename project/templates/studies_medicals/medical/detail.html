@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                <i class="bi bi-house-door-fill text-primary"></i>
+                inicio</a>
+            </li>
+            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Exámenes</a></li>         
+        </ol>
+    </nav>
     {% include 'components/messages.html' %}
     
-    <h1 class="mt-2">Resultados</h1>
+    <h1 class="display-5 fw-medium">Resultados</h1>
     <p>{{ studie_medical.type_studie }}</p>
 
     <p>Profesional solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
@@ -36,7 +45,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ¿Estás seguro de que deseas eliminar esta historia médica?
+                    ¿Estás seguro de que deseas eliminar este estudio?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
