@@ -83,16 +83,6 @@ class ListStudiesMedicalsView(View):
 
             return render(request, 'studies_medicals/medical/list.html', context)
         
-        if get_rol_user(request.user, 'Patients'):
-            try:
-                medical_history = MedicalHistory.objects.get(patient=request.user)
-                studies_patients = StudiesMedicals.objects.filter(patient=medical_history)  
-                context['studies_patients'] = studies_patients
-            except:
-                messages.success(self.request, "Aun no tienes examenes medicos asosciados", extra_tags="alert alert-danger")
-                
-            return render(request, 'studies_medicals/patient/list.html', context)
-        
         else:
             return render(request, 'components/404.html')
 
