@@ -16,7 +16,7 @@
         {% for studie_medical in studies_medicals %}
         <div class="card w-100 mt-3">
             <div class="card-body">
-                <h5 class="card-title">{{studie_medical.studie_name}}</h5>
+                <h5 class="card-title">{{studie_medical.name}}</h5>
                 <p class="card-text">Ultimo realizado  {{ studie_medical.date_joined }}</p>
 
                 <a href="{% url 'studies_medicals:studiesmedicals_detail' studie_medical.id %}" class="btn btn-primary">Ver Resultados</a>

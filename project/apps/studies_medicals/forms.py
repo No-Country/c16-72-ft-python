@@ -14,13 +14,13 @@ class StudieMedicalForm(forms.ModelForm):
     
     class Meta:
         model = StudiesMedicals
-        fields = ['dni_patient', 'type_studie','studie_name', 'result', 'report', 'observations']
+        fields = ['dni_patient', 'type_studie', 'name', 'result', 'report', 'observations']
 
         exclude = ['medical']
         labels = {
             'dni_patient': 'DNI del paciente',
             'type_studie': 'Tipo de estudio',
-            'studie_name': 'Nombre del estudio',
+            'name': 'Nombre del estudio',
             'result': 'Resultado',
             'report': 'Informe',
             'observations': 'Observaciones'
