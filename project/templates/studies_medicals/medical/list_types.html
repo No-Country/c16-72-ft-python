@@ -3,8 +3,7 @@
 {% block content %}
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Exámenes</li>
+            <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
         </ol>
     </nav>
 
@@ -17,6 +16,7 @@
         {% for studie_medical in studies_medicals %}
         <div class="card w-100 mt-3">
             <div class="card-body">
+                <h5 class="card-title">{{studie_medical.studie_name}}</h5>
                 <p class="card-text">Ultimo realizado  {{ studie_medical.date_joined }}</p>
                 <a href="{% url 'studies_medicals:studiesmedicals_detail' studie_medical.id %}" class="btn btn-primary">Ver Resultados</a>
             </div>

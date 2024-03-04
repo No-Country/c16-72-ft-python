@@ -5,7 +5,31 @@
 {% block content %}
 {% include 'components/messages.html' %}
     <div class="container p-5">
-        <h2 class="display-5 text-center">Estudio Medico</h2>
+
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                    <i class="bi bi-house-door-fill text-primary"></i>
+                    inicio</a>
+                </li>
+                {% if request.path == '/clinic/studies/create' %}
+                    <li class="breadcrumb-item active" aria-current="page">Crear exámen</a></li>
+                {% else %}
+                    <li class="breadcrumb-item active" aria-current="page">Actualizar exámen</a></li>
+                {% endif %}
+                
+            </ol>
+        </nav>
+
+        <h2 class="display-5 fw-medium pb-4">
+            {% if request.path == '/clinic/studies/create' %}
+            Crear 
+            {% else %}
+            Actualizar 
+            {% endif %}
+            exámen
+        </h2>
+        
         
         <form method="post" action="" enctype="multipart/form-data" class="align-items-center">
             {% csrf_token %}

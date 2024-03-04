@@ -13,9 +13,9 @@
 </nav>
     
 {% endblock nav %}
-<h2 class="display-5 mb-4 fw-medium">Listado de Historias Clinicas</h2>
 
 {% block search %}
+<h2 class="display-5 mb-4 fw-medium">Historiales médico</h2>
     <!-- Sirve para buscar historias clinicas por paciente. Se pasa a la variable "consult" de la vista. -->
     <div class="py-lg-4 text-center">
         <form action="{% url 'medical_history:medicalhistory_list' %}" method="get">

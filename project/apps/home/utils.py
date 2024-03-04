@@ -1,6 +1,5 @@
 from django.contrib.auth.models import Group
 from studies_medicals.models import TypeStudieMedical
-from django.core.exceptions import ObjectDoesNotExist
 from django.db.utils import OperationalError
 
 def check_and_create_groups_and_models():
