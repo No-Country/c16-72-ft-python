@@ -1,10 +1,9 @@
+<h1 align="center">Centro médico Cousin</h1>
 
+<p>Este proyecto es un sistema de gestión de historias clínicas y estudios médicos para una clínica médica. Permite a los médicos administrar las historias clínicas y los estudios médicos de los pacientes, así como a los pacientes ver sus propios estudios e historias clínicas y descargar los estudios.</p>
 <div align=center >
     <img src="./project/static_dev/images/logos/logo_png.png" class="img-logo" alt="Centro médico Cousin" height=250 >
 </div>
-<hr>
-
-<p>Este proyecto es un sistema de gestión de historias clínicas y estudios médicos para una clínica médica. Permite a los médicos administrar las historias clínicas y los estudios médicos de los pacientes, así como a los pacientes ver sus propios estudios e historias clínicas y descargar los estudios.</p>
 
 <h2 align="center">
 Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelrizzi.pythonanywhere.com/">Centro médico Cousin</a>.
@@ -65,7 +64,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 
 <hr>
 
-<h2>Funcionalidades principales</h2>
+<h2 align="center">Funcionalidades principales</h2>
 <ul>
         <li>Administración de Historias Clínicas: Los médicos pueden crear, ver, actualizar y eliminar historias clínicas de los pacientes.</li>
         <li>Administración de Estudios Médicos: Los médicos pueden cargar, ver, actualizar y eliminar estudios médicos de los pacientes.</li>
@@ -75,20 +74,18 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 
 <hr>
 
-<h2>Tecnologías utilizadas</h2>
-<ul>
-  <li><img src="https://img.shields.io/badge/Python-%233776AB.svg?logo=python&logoColor=white" alt="Python"></li>
-  <li><img src="https://img.shields.io/badge/Django-%23092E20.svg?logo=django&logoColor=white" alt="Django"></li>
-  <li><img src="https://img.shields.io/badge/HTML/CSS-%23E34F26.svg?logo=html5&logoColor=white" alt="HTML/CSS"></li>
-  <li><img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black" alt="JavaScript"></li>
-  <li><img src="https://img.shields.io/badge/jQuery-%230769AD.svg?logo=jquery&logoColor=white" alt="jQuery"></li>
-</ul>
+<h2 align="center">Tecnologías utilizadas</h2>
+<div align="center">
+  <img src="https://img.shields.io/badge/Python-%233776AB.svg?logo=python&logoColor=white" alt="Python">
+  <img src="https://img.shields.io/badge/Django-%23092E20.svg?logo=django&logoColor=white" alt="Django">
+  <img src="https://img.shields.io/badge/HTML/CSS-%23E34F26.svg?logo=html5&logoColor=white" alt="HTML/CSS">
+  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/jQuery-%230769AD.svg?logo=jquery&logoColor=white" alt="jQuery">
+</div>
 
 <hr>
 
-<h2>Instalación y ejecución</h2>
-
-<p>Pasos para instalar el proyecto:</p>
+<h2 align="center">Instalación y ejecución</h2>
 
 <ol>
     <li>Clone este repositorio en su máquina local usando el comando <code>git clone https://github.com/No-Country/c16-72-ft-python.git</code>.</li>
@@ -106,7 +103,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 
 <hr>
 
-<h2>Uso</h2>
+<h2 align="center">Uso</h2>
 
 <p>Una vez que el servidor esté en funcionamiento, puedes acceder al sistema a través de tu navegador web. Los médicos podrán iniciar sesión, administrar las historias clínicas y los estudios médicos, y los pacientes podrán iniciar sesión para ver y descargar sus propios estudios e historias clínicas.</p>
 
