@@ -21,3 +21,65 @@ textarea{
   height: 15px;
   resize: none;
 }
+
+.carousel, .carousel-inner, .carousel-item {
+  width: 100%;
+  height: 560px;
+}
+
+.img-slider{
+  object-fit: cover !important;
+  object-position:center!important;
+  height: 100%;
+
+}
+
+.form-login {
+  /* Borde de 1px sólido con color gris */
+  border-radius: 10px; /* Bordes redondeados */
+  background-color: rgba(200, 200, 200, 0.3); /* Color de fondo transparente medio gris */
+  box-shadow: 
+    0 10px 20px rgba(0, 0, 0, 0.1), /* Sombra difuminada más grande por debajo */
+    0 6px 6px rgba(0, 0, 0, 0.1); /* Sombra difuminada más pequeña por encima */
+  padding: 20px; /* Espaciado interno para el contenido del formulario */
+}
+
+@media (min-width: 1024px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 520px; 
+  }
+
+}
+
+@media (max-width: 700px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 480px; 
+  }
+
+}
+
+@media (max-width: 500px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 400px; 
+  }
+}
+
+@media (max-width: 400px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 310px; 
+  }
+}
+
+@media (min-width: 1000px) {
+  .form-login {
+    padding: 20px 100px 40px 100px !important;
+  }
+}
