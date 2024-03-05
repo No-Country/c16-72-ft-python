@@ -16,7 +16,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 <table align="center">
   <tr>
     <td align="center">
-      <img src="https://media.licdn.com/dms/image/D4D03AQHEUMBZW5Xwdg/profile-displayphoto-shrink_800_800/0/1695943376792?e=1715212800&v=beta&t=_d6iyef9wZ_ndapJIcveQV4iksKU3szGPqRNCx4ejJE" alt="Consuelo León Abarca" style="width: 150px; height: 150px;">
+      <img src="https://media.licdn.com/dms/image/D4D03AQHEUMBZW5Xwdg/profile-displayphoto-shrink_800_800/0/1695943376792?e=1715212800&v=beta&t=_d6iyef9wZ_ndapJIcveQV4iksKU3szGPqRNCx4ejJE" alt="Consuelo León Abarca" height=200 width=200>
       <p><strong>Consuelo León Abarca</strong></p>
       <p>Diseñadora UX/UI</p>
       <a href="https://www.linkedin.com/in/consuelo-leon-abarca/">
@@ -27,7 +27,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
       </a>    
     </td>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/151546685?v=4" alt="Sebastián Laverde" style="width: 150px; height: 150px;">
+      <img src="https://avatars.githubusercontent.com/u/151546685?v=4" alt="Sebastián Laverde" height=200 width=200>
       <p><strong>Sebastián Laverde</strong></p>
       <p>Desarrollador Full Stack</p>
       <a href="https://www.linkedin.com/in/sebastian-laverde-51a33715b/"">
@@ -37,8 +37,10 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
         <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
       </a>    
     </td>
+</tr>
+<tr>
     <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/89327840?v=4" alt="Brenda Huemer" style="width: 150px; height: 150px;">
+      <img src="https://avatars.githubusercontent.com/u/89327840?v=4" alt="Brenda Huemer" height=200 width=200>
       <p><strong>Brenda Huemer</strong></p>
       <p>Desarrolladora Full Stack</p>
       <a href="https://www.linkedin.com/in/brenda-huemer/">
@@ -49,7 +51,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
       </a>    
     </td>
     <td align="center">
-      <img src="https://media.licdn.com/dms/image/D4D03AQGj9Hcc9uny1Q/profile-displayphoto-shrink_800_800/0/1704305853538?e=1715212800&v=beta&t=QTiOgUX7qXPp4Lg2BYj0qURK35hB1DWsX2RwUJ4dO3Y" alt="Miguel Angel Rizzi" style="width: 150px; height: 150px;">
+      <img src="https://media.licdn.com/dms/image/D4D03AQGj9Hcc9uny1Q/profile-displayphoto-shrink_800_800/0/1704305853538?e=1715212800&v=beta&t=QTiOgUX7qXPp4Lg2BYj0qURK35hB1DWsX2RwUJ4dO3Y" alt="Miguel Angel Rizzi" height=200 width=200>
       <p><strong>Miguel Angel Rizzi</strong></p>
       <p>Desarrollador Full Stack</p>
       <a href="https://linkedin.com/in/miguel-angel-rizzi">
@@ -89,7 +91,10 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 
 <ol>
     <li>Clone este repositorio en su máquina local usando el comando <code>git clone https://github.com/No-Country/c16-72-ft-python.git</code>.</li>
-    <li>[Agrega los pasos específicos para instalar el entorno virtual y las dependencias]</li>
+    <li>Si usa Visual Studio Code, abra el archivo <code>requirements.txt</code> y haga clic en Crear ambiente, luego elija Venv y el intérprete Python, y finalmente 
+    pregunte por las dependencias: elija <code>requirements.txt</code>. Esto creará el entorno virtual e instalará todas las librerías necesarias para ejecutar el proyecto. 
+    </li>
+    <li>Si prefiere instalarlo de manera manual, use el comando <code>python -m venv .venv</code>. Esto creará una carpeta llamada <code>.venv</code> dentro del directorio      del proyecto. Active el entorno virtual usando el comando <code>source .venv/bin/activate</code> en Linux o Mac, o <code>.venv\Scripts\activate</code> en Windows.           Instale las dependencias del proyecto usando el comando <code>pip install -r requirements.txt</code>.</li>
     <li>Para configurar las variables de entorno crea un archivo llamado <code>.env</code> en el directorio raíz de tu proyecto, a la altura del archivo <code>settings.py</code>. Dentro de este archivo, define las variables de entorno de la siguiente manera:<br>
     <pre>
         SECRET_KEY=tu_clave_secreta
@@ -105,5 +110,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 
 <h2 align="center">Uso</h2>
 
-<p>Una vez que el servidor esté en funcionamiento, puedes acceder al sistema a través de tu navegador web. Los médicos podrán iniciar sesión, administrar las historias clínicas y los estudios médicos, y los pacientes podrán iniciar sesión para ver y descargar sus propios estudios e historias clínicas.</p>
+<p>Una vez que el servidor esté en funcionamiento, puedes acceder al sistema a través de tu navegador web. Los médicos podrán iniciar sesión para administrar las historias clínicas y los estudios médicos. Los pacientes podrán iniciar sesión para ver y descargar sus propios estudios e historias clínicas.
+
+El sistema proporciona una interfaz intuitiva para que los médicos y pacientes gestionen y accedan a la información médica de manera segura y eficiente. Los médicos podrán agregar, editar y eliminar historias clínicas y estudios médicos, mientras que los pacientes tendrán acceso a su propia información para un mayor control y seguimiento de su salud.</p>
 
