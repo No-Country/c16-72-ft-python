@@ -68,6 +68,9 @@ textarea{
   .carousel-item {
     height: 400px; 
   }
+  .img-card-index{
+    height: 220px;
+  }
 }
 
 @media (max-width: 400px) {
