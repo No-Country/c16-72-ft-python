@@ -24,7 +24,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["MiguelRizzi.pythonanywhere.com"]
 
 
 # Application definition
@@ -139,4 +139,6 @@ AUTH_USER_MODEL ='users.User'
 
 #Login
 LOGIN_URL = 'users:login'
+
+SITE_ID=1
 
