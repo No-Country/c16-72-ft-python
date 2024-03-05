@@ -1,51 +1,67 @@
 
-<div style="display: flex; justify-content: center; align-items: center; height: 120px; background-color: white; padding: 12px;">
-    <img src="./project/static_dev/images/logos/logo_png.png" class="img-logo" alt="Sebastián Laverde">
+<div align=center >
+    <img src="./project/static_dev/images/logos/logo_png.png" class="img-logo" alt="Centro médico Cousin" height=250 >
 </div>
-
-
 <hr>
 
 <p>Este proyecto es un sistema de gestión de historias clínicas y estudios médicos para una clínica médica. Permite a los médicos administrar las historias clínicas y los estudios médicos de los pacientes, así como a los pacientes ver sus propios estudios e historias clínicas y descargar los estudios.</p>
 
-<p style="font-size:18px; padding:10px; color:blueviolet; text-align:center;">
+<h2 align="center">
 Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelrizzi.pythonanywhere.com/">Centro médico Cousin</a>.
-</p>
+</h2>
 
 <hr>
 
-<h2 style="text-align:center;">Equipo de Desarrollo</h2>
+<h2 align="center">Equipo de Desarrollo</h2>
 
-<div  style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
-            <img src="https://media.licdn.com/dms/image/D4D03AQHEUMBZW5Xwdg/profile-displayphoto-shrink_800_800/0/1695943376792?e=1715212800&v=beta&t=_d6iyef9wZ_ndapJIcveQV4iksKU3szGPqRNCx4ejJE" alt="Consuelo León Abarca" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-            <p><strong>Consuelo León Abarca</strong></p>
-            <p>Diseñadora UX/UI</p>
-            <p><a href="https://www.linkedin.com/in/consuelo-leon-abarca/">LinkedIn</a></p>
-            <p><a href="https://github.com/consuelo0595">GitHub</a></p>
-        </div>
-        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
-            <img src="https://avatars.githubusercontent.com/u/151546685?v=4" alt="Sebastián Laverde" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-            <p><strong>Sebastián Laverde</strong></p>
-            <p>Desarrollador Full Stack</p>
-            <p><a href="https://www.linkedin.com/in/sebastian-laverde-51a33715b/">LinkedIn</a></p>
-            <p><a href="https://github.com/sbtn63">GitHub</a></p>
-        </div>
-        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
-            <img src="https://avatars.githubusercontent.com/u/89327840?v=4" alt="Brenda Huemer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-            <p><strong>Brenda Huemer</strong></p>
-            <p>Desarrolladora Full Stack</p>
-            <p><a href="https://github.com/brxndxz">LinkedIn</a></p>
-            <p><a href="https://github.com/analopez">GitHub</a></p>
-        </div>
-        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
-            <img src="https://media.licdn.com/dms/image/D4D03AQGj9Hcc9uny1Q/profile-displayphoto-shrink_800_800/0/1704305853538?e=1715212800&v=beta&t=QTiOgUX7qXPp4Lg2BYj0qURK35hB1DWsX2RwUJ4dO3Y" alt="Miguel Angel Rizzi" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
-            <p><strong>Miguel Angel Rizzi</strong></p>
-            <p>Desarrollador Full Stack</p>
-            <p><a href="https://www.linkedin.com/in/miguel-angel-rizzi/">LinkedIn</a></p>
-            <p><a href="https://github.com/MiguelRizzi">GitHub</a></p>
-        </div>
-</div>
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="https://media.licdn.com/dms/image/D4D03AQHEUMBZW5Xwdg/profile-displayphoto-shrink_800_800/0/1695943376792?e=1715212800&v=beta&t=_d6iyef9wZ_ndapJIcveQV4iksKU3szGPqRNCx4ejJE" alt="Consuelo León Abarca" style="width: 150px; height: 150px;">
+      <p><strong>Consuelo León Abarca</strong></p>
+      <p>Diseñadora UX/UI</p>
+      <a href="https://www.linkedin.com/in/consuelo-leon-abarca/">
+        <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+      </a> 
+      <a href="https://github.com/consuelo0595">
+        <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
+      </a>    
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/151546685?v=4" alt="Sebastián Laverde" style="width: 150px; height: 150px;">
+      <p><strong>Sebastián Laverde</strong></p>
+      <p>Desarrollador Full Stack</p>
+      <a href="https://www.linkedin.com/in/sebastian-laverde-51a33715b/"">
+        <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+      </a> 
+      <a href="https://github.com/sbtn63">
+        <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
+      </a>    
+    </td>
+    <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/89327840?v=4" alt="Brenda Huemer" style="width: 150px; height: 150px;">
+      <p><strong>Brenda Huemer</strong></p>
+      <p>Desarrolladora Full Stack</p>
+      <a href="https://www.linkedin.com/in/brenda-huemer/">
+        <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+      </a> 
+      <a href="https://github.com/brxndxz">
+        <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
+      </a>    
+    </td>
+    <td align="center">
+      <img src="https://media.licdn.com/dms/image/D4D03AQGj9Hcc9uny1Q/profile-displayphoto-shrink_800_800/0/1704305853538?e=1715212800&v=beta&t=QTiOgUX7qXPp4Lg2BYj0qURK35hB1DWsX2RwUJ4dO3Y" alt="Miguel Angel Rizzi" style="width: 150px; height: 150px;">
+      <p><strong>Miguel Angel Rizzi</strong></p>
+      <p>Desarrollador Full Stack</p>
+      <a href="https://linkedin.com/in/miguel-angel-rizzi">
+        <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
+      </a> 
+      <a href="https://github.com/MiguelRizzi">
+        <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
+      </a>
+    </td>
+  </tr>
+</table>
 
 <hr>
 
@@ -61,10 +77,11 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 
 <h2>Tecnologías utilizadas</h2>
 <ul>
-        <li>Python</li>
-        <li>Django</li>
-        <li>HTML/CSS</li>
-        <li>JavaScript</li>
+  <li><img src="https://img.shields.io/badge/Python-%233776AB.svg?logo=python&logoColor=white" alt="Python"></li>
+  <li><img src="https://img.shields.io/badge/Django-%23092E20.svg?logo=django&logoColor=white" alt="Django"></li>
+  <li><img src="https://img.shields.io/badge/HTML/CSS-%23E34F26.svg?logo=html5&logoColor=white" alt="HTML/CSS"></li>
+  <li><img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black" alt="JavaScript"></li>
+  <li><img src="https://img.shields.io/badge/jQuery-%230769AD.svg?logo=jquery&logoColor=white" alt="jQuery"></li>
 </ul>
 
 <hr>
@@ -92,23 +109,4 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 <h2>Uso</h2>
 
 <p>Una vez que el servidor esté en funcionamiento, puedes acceder al sistema a través de tu navegador web. Los médicos podrán iniciar sesión, administrar las historias clínicas y los estudios médicos, y los pacientes podrán iniciar sesión para ver y descargar sus propios estudios e historias clínicas.</p>
-
-
-
-
-
-
-   
-
-</style>
-<style>
-    
-    
-    }
-</style>
-<style>
-    .h2-team{
-        
-    }
-</style>
 
