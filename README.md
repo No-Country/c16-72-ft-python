@@ -1,25 +1,5 @@
-<style>
-    .div-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 120px;
-        background-color: white;
-        padding: 12px;
-    }
-    .img-img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-    .p-deploy{
-        font-size:18px; 
-        padding:10px;
-        color:blueviolet;
-        text-align:center;
-    }
-</style>
 
-<div class="div-logo">
+<div style="display: flex; justify-content: center; align-items: center; height: 120px; background-color: white; padding: 12px;">
     <img src="./project/static_dev/images/logos/logo_png.png" class="img-logo" alt="Sebastián Laverde">
 </div>
 
@@ -28,60 +8,38 @@
 
 <p>Este proyecto es un sistema de gestión de historias clínicas y estudios médicos para una clínica médica. Permite a los médicos administrar las historias clínicas y los estudios médicos de los pacientes, así como a los pacientes ver sus propios estudios e historias clínicas y descargar los estudios.</p>
 
-<p class="p-deploy">Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelrizzi.pythonanywhere.com/">Centro médico Cousin</a>.</p>
+<p style="font-size:18px; padding:10px; color:blueviolet; text-align:center;">
+Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelrizzi.pythonanywhere.com/">Centro médico Cousin</a>.
+</p>
+
 <hr>
 
-<h2 class="h2-team">Equipo de Desarrollo</h2>
-<style>
-    .team {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .team-member {
-        flex: 0 0 200px;
-        margin: 20px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        text-align: center;
-    }
-    .team-member img {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-bottom: 10px;
-    }
-    .h2-team{
-        text-align:center;
-    }
-</style>
+<h2 style="text-align:center;">Equipo de Desarrollo</h2>
 
-<div class="team">
-        <div class="team-member">
-            <img src="https://media.licdn.com/dms/image/D4D03AQHEUMBZW5Xwdg/profile-displayphoto-shrink_800_800/0/1695943376792?e=1715212800&v=beta&t=_d6iyef9wZ_ndapJIcveQV4iksKU3szGPqRNCx4ejJE" alt="Consuelo León Abarca">
+<div  style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
+            <img src="https://media.licdn.com/dms/image/D4D03AQHEUMBZW5Xwdg/profile-displayphoto-shrink_800_800/0/1695943376792?e=1715212800&v=beta&t=_d6iyef9wZ_ndapJIcveQV4iksKU3szGPqRNCx4ejJE" alt="Consuelo León Abarca" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
             <p><strong>Consuelo León Abarca</strong></p>
             <p>Diseñadora UX/UI</p>
             <p><a href="https://www.linkedin.com/in/consuelo-leon-abarca/">LinkedIn</a></p>
             <p><a href="https://github.com/consuelo0595">GitHub</a></p>
         </div>
-        <div class="team-member">
-            <img src="https://avatars.githubusercontent.com/u/151546685?v=4" alt="Sebastián Laverde">
+        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
+            <img src="https://avatars.githubusercontent.com/u/151546685?v=4" alt="Sebastián Laverde" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
             <p><strong>Sebastián Laverde</strong></p>
             <p>Desarrollador Full Stack</p>
             <p><a href="https://www.linkedin.com/in/sebastian-laverde-51a33715b/">LinkedIn</a></p>
             <p><a href="https://github.com/sbtn63">GitHub</a></p>
         </div>
-        <div class="team-member">
-            <img src="https://avatars.githubusercontent.com/u/89327840?v=4" alt="Brenda Huemer">
+        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
+            <img src="https://avatars.githubusercontent.com/u/89327840?v=4" alt="Brenda Huemer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
             <p><strong>Brenda Huemer</strong></p>
             <p>Desarrolladora Full Stack</p>
             <p><a href="https://github.com/brxndxz">LinkedIn</a></p>
             <p><a href="https://github.com/analopez">GitHub</a></p>
         </div>
-        <div class="team-member">
-            <img src="https://media.licdn.com/dms/image/D4D03AQGj9Hcc9uny1Q/profile-displayphoto-shrink_800_800/0/1704305853538?e=1715212800&v=beta&t=QTiOgUX7qXPp4Lg2BYj0qURK35hB1DWsX2RwUJ4dO3Y" alt="Miguel Angel Rizzi">
+        <div style="flex: 0 0 200px; margin: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; text-align: center;">
+            <img src="https://media.licdn.com/dms/image/D4D03AQGj9Hcc9uny1Q/profile-displayphoto-shrink_800_800/0/1704305853538?e=1715212800&v=beta&t=QTiOgUX7qXPp4Lg2BYj0qURK35hB1DWsX2RwUJ4dO3Y" alt="Miguel Angel Rizzi" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
             <p><strong>Miguel Angel Rizzi</strong></p>
             <p>Desarrollador Full Stack</p>
             <p><a href="https://www.linkedin.com/in/miguel-angel-rizzi/">LinkedIn</a></p>
@@ -135,4 +93,22 @@
 
 <p>Una vez que el servidor esté en funcionamiento, puedes acceder al sistema a través de tu navegador web. Los médicos podrán iniciar sesión, administrar las historias clínicas y los estudios médicos, y los pacientes podrán iniciar sesión para ver y descargar sus propios estudios e historias clínicas.</p>
 
+
+
+
+
+
+   
+
+</style>
+<style>
+    
+    
+    }
+</style>
+<style>
+    .h2-team{
+        
+    }
+</style>
 
