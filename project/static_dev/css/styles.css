@@ -16,6 +16,9 @@ body{
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
 }
+.img-card-index{
+  object-fit: cover;
+}
 
 textarea{
   height: 15px;
@@ -31,26 +34,39 @@ textarea{
   object-fit: cover !important;
   object-position:center!important;
   height: 100%;
-
 }
 
 .form-login {
-  /* Borde de 1px sólido con color gris */
-  border-radius: 10px; /* Bordes redondeados */
-  background-color: rgba(200, 200, 200, 0.3); /* Color de fondo transparente medio gris */
+  border-radius: 10px; 
+  background-color: rgba(200, 200, 200, 0.3); 
   box-shadow: 
-    0 10px 20px rgba(0, 0, 0, 0.1), /* Sombra difuminada más grande por debajo */
-    0 6px 6px rgba(0, 0, 0, 0.1); /* Sombra difuminada más pequeña por encima */
-  padding: 20px; /* Espaciado interno para el contenido del formulario */
+    0 10px 20px rgba(0, 0, 0, 0.1), 
+    0 6px 6px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1201px) {
   .carousel,
   .carousel-inner,
   .carousel-item {
-    height: 520px; 
+    height: 780px; 
   }
+}
 
+@media (max-width: 1200px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 740px; 
+  }
+}
+
+@media (max-width: 1024px) {
+  .carousel,
+  .carousel-inner,
+  .carousel-item {
+    height: 540px; 
+  }
 }
 
 @media (max-width: 700px) {
@@ -59,7 +75,6 @@ textarea{
   .carousel-item {
     height: 480px; 
   }
-
 }
 
 @media (max-width: 500px) {
@@ -68,9 +83,7 @@ textarea{
   .carousel-item {
     height: 400px; 
   }
-  .img-card-index{
-    height: 220px;
-  }
+
 }
 
 @media (max-width: 400px) {
@@ -86,3 +99,4 @@ textarea{
     padding: 20px 100px 40px 100px !important;
   }
 }
+
