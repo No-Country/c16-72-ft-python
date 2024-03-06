@@ -88,10 +88,16 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
     pregunte por las dependencias: elija <code>requirements.txt</code>. Esto creará el entorno virtual e instalará todas las librerías necesarias para ejecutar el proyecto. 
     </li>
     <li>Si prefiere instalarlo de manera manual, use el comando <code>python -m venv .venv</code>. Esto creará una carpeta llamada <code>.venv</code> dentro del directorio      del proyecto. Active el entorno virtual usando el comando <code>source .venv/bin/activate</code> en Linux o Mac, o <code>.venv\Scripts\activate</code> en Windows.           Instale las dependencias del proyecto usando el comando <code>pip install -r requirements.txt</code>.</li>
+    <li>Asegúrese de tener MySQL instalado y configurado en su máquina local, cree una nueva base de datos para el proyecto. Puede hacerlo a través de la interfaz de línea de comandos de MySQL o usando una herramienta de administración de bases de datos como MySQL Workbench.</li>
     <li>Para configurar las variables de entorno crea un archivo llamado <code>.env</code> en el directorio raíz de tu proyecto, a la altura del archivo <code>settings.py</code>. Dentro de este archivo, define las variables de entorno de la siguiente manera:<br>
     <pre>
-        SECRET_KEY=tu_clave_secreta
+        SECRET_KEY=clave_secreta
         DEBUG=True
+        DB_NAME= nombre_de_la_base_de_datos
+        DB_USER= usuario_MySQL
+        DB_PASSWORD=contraseña_MySQL
+        DB_HOST=localhost
+        DB_PORT=3306
     </pre>
     </li>
     <li>Ejecute las migraciones de la base de datos usando los comandos <code>python manage.py makemigrations</code> y <code>python manage.py migrate</code>. Esto creará las tablas necesarias en la base de datos.</li>
