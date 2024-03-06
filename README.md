@@ -1,14 +1,13 @@
 <h1 align="center">Centro médico Cousin</h1>
-
-<p>Este proyecto es un sistema de gestión de historias clínicas y estudios médicos para una clínica médica. Permite a los médicos administrar las historias clínicas y los estudios médicos de los pacientes, así como a los pacientes ver sus propios estudios e historias clínicas y descargar los estudios.</p>
+<p>Este proyecto es un sistema de gestión de historias clínicas y estudios médicos diseñado para proporcionar una solución integral para clínicas médicas. Permite a los médicos administrar de manera eficiente las historias clínicas y los estudios médicos de sus pacientes, garantizando un acceso seguro a la información médica. Los pacientes tienen la posibilidad de visualizar sus propios estudios e historias clínicas, así como la capacidad de descargar los estudios para su propio uso y referencia. Esta plataforma busca mejorar la experiencia tanto para los médicos como para los pacientes, facilitando la gestión y acceso a la información médica de manera confiable y accesible. Al abordar la necesidad de una gestión eficiente y segura de la información médica, este sistema ofrece una solución integral para mejorar el flujo de trabajo clínico y la experiencia del paciente.</p>
 <div align=center >
     <img src="./project/static_dev/images/logos/logo_png.png" class="img-logo" alt="Centro médico Cousin" height=250 >
 </div>
+<hr>
 
 <h2 align="center">
-Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelrizzi.pythonanywhere.com/">Centro médico Cousin</a>.
+Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelrizzi.pythonanywhere.com/"><img src="https://img.shields.io/badge/Centro%20a%20médico%20Cousin-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin"></a>
 </h2>
-
 <hr>
 
 <h2 align="center">Equipo de Desarrollo</h2>
@@ -22,6 +21,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
       <a href="https://www.linkedin.com/in/consuelo-leon-abarca/">
         <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
       </a> 
+      <br>
       <a href="https://github.com/consuelo0595">
         <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
       </a>    
@@ -33,6 +33,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
       <a href="https://www.linkedin.com/in/sebastian-laverde-51a33715b/"">
         <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
       </a> 
+      <br>
       <a href="https://github.com/sbtn63">
         <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
       </a>    
@@ -46,6 +47,7 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
       <a href="https://www.linkedin.com/in/brenda-huemer/">
         <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
       </a> 
+      <br>
       <a href="https://github.com/brxndxz">
         <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
       </a>    
@@ -57,22 +59,13 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
       <a href="https://linkedin.com/in/miguel-angel-rizzi">
         <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white" alt="LinkedIn">
       </a> 
+      <br>
       <a href="https://github.com/MiguelRizzi">
         <img src="https://img.shields.io/badge/GitHub-%23181717.svg?logo=github&logoColor=white" alt="GitHub">
       </a>
     </td>
   </tr>
 </table>
-
-<hr>
-
-<h2 align="center">Funcionalidades principales</h2>
-<ul>
-        <li>Administración de Historias Clínicas: Los médicos pueden crear, ver, actualizar y eliminar historias clínicas de los pacientes.</li>
-        <li>Administración de Estudios Médicos: Los médicos pueden cargar, ver, actualizar y eliminar estudios médicos de los pacientes.</li>
-        <li>Acceso del Paciente: Los pacientes pueden ver sus propios estudios e historias clínicas, así como descargar los estudios.</li>
-</ul>
-
 
 <hr>
 
@@ -114,3 +107,14 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelr
 
 El sistema proporciona una interfaz intuitiva para que los médicos y pacientes gestionen y accedan a la información médica de manera segura y eficiente. Los médicos podrán agregar, editar y eliminar historias clínicas y estudios médicos, mientras que los pacientes tendrán acceso a su propia información para un mayor control y seguimiento de su salud.</p>
 
+<hr>
+
+<h2 align="center">Agradecimientos</h2>
+
+<a href="https://www.nocountry.tech" target="_blank">
+  <div align="center">
+    <img src="https://assets-global.website-files.com/65773955177041dbf059ed20/6584760759a54bef40894700_Logo%20navbar.svg" alt="Logo de No Country" height="45">
+  </div>
+</a>
+
+<p>Queremos expresar nuestro sincero agradecimiento a No Country, una organización dedicada a brindar la oportunidad de poner a prueba habilidades en un entorno laboral simulado donde junto a otros roles desarrollar MVPs y validar la experiencia real, ayudando así a los participantes a desarrollar habilidades blandas necesarias para conseguir su primer trabajo. Valoramos profundamente el compromiso de No Country con el crecimiento profesional y agradecemos su contribución a este proyecto. Su apoyo ha sido fundamental en el desarrollo y éxito de nuestra iniciativa.</p>
