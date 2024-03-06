@@ -1,6 +1,7 @@
 from django.contrib.auth.models import Group
 from studies_medicals.models import TypeStudieMedical
 
+
 def check_and_create_groups_and_models():
     try:
         Group.objects.get_or_create(name='Medicals')
