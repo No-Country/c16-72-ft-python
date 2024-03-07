@@ -2,11 +2,14 @@
 {% load static %}
 {% block content %}
 <div class="mx-0 mx-lg-5">
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2 mb-2">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+
+            <li class="breadcrumb-item"><i class="bi bi-house-door-fill text-primary"></i>
+                <a href="{% url 'home:index' %}">
+                Inicio</a></li>
             {% if is_medical %}
-                <li class="breadcrumb-item" aria-current="page"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Examenes</a></li>
+                <li class="breadcrumb-item" aria-current="page"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Exámenes</a></li>
             
             {% endif %}
             {% if is_medical %}
@@ -26,16 +29,16 @@
     {% elif is_patient %}
         <h1>Paciente : {{ request.user.name }} {{ request.user.last_name }}</h1>
     {% endif %}
-    <p class="fw-bold">Exámenes Medicos</p>
+    <p>Exámenes Médicos</p>
         {% for type_studie in types_studies %}
         <div class="card w-100 mt-3">
             <div class="card-body">
                 <h5 class="card-title">{{ type_studie.name }}</h5>
-                <p class="card-text">Ultimo realizado  {{ type_studie.date }}</p>
+                <p class="card-text">Último realizado  {{ type_studie.date }}</p>
                 {% if is_medical %}
-                    <a href="{% url 'studies_medicals:studiesmedicals_studies' pk_patient=type_studie.patient.id pk_type=type_studie.id %}" class="btn btn-primary">Ver examenes</a>
+                    <a href="{% url 'studies_medicals:studiesmedicals_studies' pk_patient=type_studie.patient.id pk_type=type_studie.id %}" class="btn btn-primary">Ver exámenes</a>
                 {% elif is_patient %}
-                    <a href="{% url 'studies_medicals:studiesmedicals_studies' pk_type=type_studie.id %}" class="btn btn-primary">Ver examenes</a>
+                    <a href="{% url 'studies_medicals:studiesmedicals_studies' pk_type=type_studie.id %}" class="btn btn-primary">Ver exámenes</a>
                 {% endif %}
             </div>
         </div>
