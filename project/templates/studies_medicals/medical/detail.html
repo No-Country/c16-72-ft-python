@@ -20,9 +20,10 @@
 
     <p>Profesional solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
     <p>Paciente: {{ studie_medical.patient }}</p>
+    <p>DNI: {{ studie_medical.patient.patient.dni }}</p>
     <p>Examen: {{ studie_medical.name }}</p>
     <p>Observaciones: {{ studie_medical.observations }}</p>
-    <p>DNI: {{ studie_medical.patient.patient.dni }}</p>
+    <p>Informes: {{ studie_medical.report }}</p>
     <p>Edad: {{ studie_medical.patient.patient.age }}</p>
     <p> Sexo: {{ studie_medical.patient.patient.sex }}</p>
     <p>Toma muestra: {{ studie_medical.date_joined }}</p>
@@ -31,10 +32,10 @@
         <img  class="img-fluid" src="{{ studie_medical.result.url }}" alt="imagen">
     {% endif %}
 
-    <div class="mt-2 d-flex  justify-content-between">
+    <div class="mt-2 d-flex  justify-content-end">
         {% if studie_medical.medical.id == request.user.id%}
-        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary">Actualizar</a>
-        <a class="btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
+        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary mr-2">Actualizar</a>
+        <a class="mx-2 btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
         {% endif %}
     </div>
 
