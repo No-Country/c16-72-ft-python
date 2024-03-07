@@ -22,7 +22,7 @@ def get_rol_user(user, group):
     if user.groups.filter(name=group).exists():
         return True
     
-#Funcion para traer tipos de estudios de cierto usuario
+#Funcion para traer tipos de estudios de cierto usuario y que no se repitan
 def get_types_studies_user(studies_medicals):
     type_studies = []
     seen_studies = {}

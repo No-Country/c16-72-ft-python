@@ -14,7 +14,7 @@ from .utils import render_to_pdf, get_rol_user, get_types_studies_user, get_user
 
 # Create your views here.
 
-class ListTypeStudieMedical(LoginRequiredMixin, View):
+class ListTypeStudieMedicalView(LoginRequiredMixin, View):
     def get(self, request, pk=None, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):
             patient = StudiesMedicals.objects.filter(patient=pk).first()
@@ -131,7 +131,7 @@ class DetailStudieMedicalView(LoginRequiredMixin, View):
         else:
             return render(request, 'components/404.html')
              
-class CreateStudieMedical(LoginRequiredMixin, View):
+class CreateStudieMedicalView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):  
             form = StudieMedicalForm()
@@ -172,7 +172,7 @@ class CreateStudieMedical(LoginRequiredMixin, View):
         else: 
             return render(request, 'components/404.html')
 
-class UpdateStudieMedical(LoginRequiredMixin, View):
+class UpdateStudieMedicalView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         if get_rol_user(request.user, 'Medicals'):
             try:
