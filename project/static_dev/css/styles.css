@@ -45,11 +45,15 @@ textarea{
   padding: 20px; 
 }
 
+
+.div-cards-index{
+  --bs-gutter-x: 1.5rem;
+}
 @media (min-width: 1201px) {
   .carousel,
   .carousel-inner,
   .carousel-item {
-    height: 780px; 
+    height: 630px; 
   }
 }
 
@@ -57,7 +61,7 @@ textarea{
   .carousel,
   .carousel-inner,
   .carousel-item {
-    height: 740px; 
+    height: 550px; 
   }
 }
 
@@ -65,7 +69,7 @@ textarea{
   .carousel,
   .carousel-inner,
   .carousel-item {
-    height: 540px; 
+    height: 500px; 
   }
 }
 
@@ -83,6 +87,9 @@ textarea{
   .carousel-item {
     height: 400px; 
   }
+  .div-cards-index{
+    --bs-gutter-x: 3rem;
+  }
 
 }
 
@@ -92,11 +99,38 @@ textarea{
   .carousel-item {
     height: 310px; 
   }
+  .div-cards-index{
+    margin-bottom:40px;
+  }
 }
+
+@media (max-width: 400px) {
+
+  .div-cards-index{
+    margin-bottom:80px;
+  }
+}
+
 
 @media (min-width: 1000px) {
   .form-login {
     padding: 20px 100px 40px 100px !important;
   }
+  .logo-index{
+    margin-left: 80px;
+  }
+  .card-historias{
+    margin-left:80px;
+  }
+  .card-examenes{
+    margin-right: 80px;
+  }
+  .title-carousel{
+    font-size: 45px;
+  }
+  .p-carousel{
+    font-size:20px;
+  }
 }
+
 
