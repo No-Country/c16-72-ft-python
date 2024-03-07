@@ -5,7 +5,7 @@
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
             <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Examenes</a></li>
-            {% if studie_medical %}
+            {% if patient %}
             <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' patient.patient.id %}">{{ patient.patient }}</a></li>
             {% endif %}
             {% if type_studie %}
