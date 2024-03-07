@@ -4,6 +4,7 @@
 {% block content %}
 
  {% if not is_medical %}
+ <div class="container-fluid">
      <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
          <ol class="breadcrumb">
              <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
@@ -28,7 +29,7 @@
  {% endif %}
   <h2 class="display-5 fw-medium">Historial médico</h2>
      
-  <div class="containter">
+  <div class="">
     <p>Actualización: {{object.date_joined}}</p>
     <br>
     <p>Paciente: {{ object.patient.name }} {{ object.patient.last_name }}</p>
@@ -107,6 +108,7 @@
                 </div>
             </div>
         </div>
+      </div>
 
 {% endblock content %}
 

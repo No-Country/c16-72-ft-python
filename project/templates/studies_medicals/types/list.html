@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
             {% if is_medical %}
@@ -40,6 +40,6 @@
         </div>
         {% endfor %}
     {% else %}
-        <p class="mt-2 fs-4 fst-italic">No hay registros ingresados</p>
+        <p class="mt-2 fs-4 text-center">No hay registros ingresados</p>
     {% endif %}
 {% endblock %}
