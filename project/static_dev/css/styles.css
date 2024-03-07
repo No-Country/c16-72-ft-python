@@ -121,9 +121,11 @@ textarea{
   }
   .card-historias{
     margin-left:80px;
+    margin-right: 18px;
   }
   .card-examenes{
     margin-right: 80px;
+    margin-left: 18px;
   }
   .title-carousel{
     font-size: 45px;
