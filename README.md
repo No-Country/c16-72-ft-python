@@ -6,7 +6,7 @@
 <hr>
 
 <h2 align="center">
-Puedes acceder a la aplicación web desplegada en: <br> <a href="https://miguelrizzi.pythonanywhere.com/"><img src="https://img.shields.io/badge/Centro%20a%20médico%20Cousin-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin"></a>
+Puedes acceder a la aplicación web desplegada en: <br> <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/Centro%20a%20médico%20Cousin-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin"></a>
 </h2>
 <hr>
 
