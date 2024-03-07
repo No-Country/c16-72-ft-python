@@ -2,8 +2,8 @@
 {% load static %}
 
 {% block header %}
-    <div class="d-flex justify-content-md-start justify-content-center py-2">
-        <img src="{% static 'images/logos/logo_png.png' %}" style="width: 350px;" alt="Clinica Cousin">
+    <div class="d-flex justify-content-lg-start justify-content-center py-4 px-0 px-lg-5">
+        <img src="{% static 'images/logos/logo_png.png' %}" style="width: 350px;" alt="Clinica Cousin" class="mx-0 mx-lg-4">
     </div>
 
     <div id="carouselExampleCaptions" class="carousel slide">
@@ -25,29 +25,29 @@
           <div class="carousel-item">
             <img src="{% static 'images/carousel/2.jpg' %}" class="d-block w-100 img-slider" alt="...">
             <div class="carousel-caption d-block">
-              <h5>Second slide label</h5>
-              <p>Some representative placeholder content for the second slide.</p>
+              <h5>Historias Clínicas Digitales</h5>
+              <p>Utilizamos tecnología moderna para mantener tus registros médicos seguros y accesibles.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{% static 'images/carousel/3.jpg' %}" class="d-block w-100 img-slider" alt="...">
             <div class="carousel-caption d-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h5>Consulta de Resultados en Línea</h5>
+              <p>Accede a tus resultados de exámenes médicos de forma segura y conveniente desde cualquier lugar.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{% static 'images/carousel/4.jpg' %}" class="d-block w-100 img-slider" alt="...">
             <div class="carousel-caption d-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h5>Consultas Médicas</h5>
+              <p>Estamos aquí para responder a todas tus preguntas y preocupaciones de salud.</p>
             </div>
           </div>
           <div class="carousel-item">
             <img src="{% static 'images/carousel/5.jpg' %}" class="d-block w-100 img-slider" alt="...">
             <div class="carousel-caption d-block">
-              <h5>Third slide label</h5>
-              <p>Some representative placeholder content for the third slide.</p>
+              <h5>Medicina Preventiva</h5>
+              <p>Enfocados en prevenir enfermedades y promover la salud a largo plazo.</p>
             </div>
           </div>
         </div>
@@ -65,79 +65,83 @@
 
 {% block content %}
 
-    {% include 'components/messages.html' %}
+      {% include 'components/messages.html' %}
 
 
-      <div class="container mt-4 mb-5 py-2">
+      <div class="container-fluid my-5 py-2">
 
         <div class="row">
-        <div class="col-12 col-lg-6">
-          <div>
-            <div class="card w-100 my-2">
-              <div class="container-fluid card-index" style="--bs-gutter-x: 0;">
-                  <div class="row">
-                      <div class="col-6 h-100">
-                          <img src="{% static 'images/cards/1_Historial_medico.jpg' %}" class="card-img-top img-card-index" alt="..." style="border-radius: 0.25rem;">
-                      </div>
-                      <div class="card-body col-6 card-body">
-                          <h5 class="card-title">Historial médico</h5>
-                          <p class="card-text">Ver detalles historial medico.</p>
-                          {% if not user.is_authenticated %}
-                              <p class="my-4">Debe autenticarse para ver su historial.</p>
-                          {% endif %}
-      
-                          {% if is_patient and medical_history %}
-                              <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-primary my-4">Ver mi historial</a>
-                          {% endif %}
-      
-                          {% if is_patient and not medical_history %}
-                              <p>Usted aun no tiene historial médico</p> 
-                          {% endif %}
-      
-                          {% if is_medical %}
-                            <a href="{% url 'medical_history:medicalhistory_create' %}" class="btn btn-primary my-4">Crear historial</a><br>
-                            <a href="{% url 'medical_history:medicalhistory_list' %}" class="">Ver historiales</a>
-                          {% endif %}
-                      </div>  
-                  </div>
+          <!-- Cards -->
+        <div class="com-13 col-lg-6 mb-5 mx-0 px-0 px-lg-2">
+          <div class="card mb-3" style="min-width: 260px;">
+            <div class="row g-0">
+              <div class="col-4">
+                <img src="{% static 'images/cards/1_Historial_medico.jpg' %}" class="img-fluid rounded-start object-fit-cover" alt="Historiales médico" style="min-height: 200px; min-width:130px;">
               </div>
-          </div>
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title">Historial médico</h5>
+                  <p class="card-text">Ver detalles historial medico.</p>
+                  
+                  {% if not user.is_authenticated %}
+                    <a href="{% url 'users:login' %}" class="btn btn-success my-4">Ir al portal</a>
+                  {% endif %}
+
+                  {% if is_patient and medical_history %}
+                    <a href="{% url 'medical_history:medicalhistory_detail' medical_history.id %}" class="btn btn-primary my-4">Ver mi historial</a>
+                  {% endif %}
+
+                  {% if is_patient and not medical_history %}
+                  <button class="btn btn-secondary my-4" disabled>Ver mi historial</button> 
+                  {% endif %}
+
+                  {% if is_medical %}
+                    <a href="{% url 'medical_history:medicalhistory_create' %}" class="btn btn-primary my-4">Crear historial</a><br>
+                    <a href="{% url 'medical_history:medicalhistory_list' %}" class="">Ver historiales</a>
+                  {% endif %}
+
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div class="col-12 col-lg-6">
-          <div>
-            <div class="card w-100 my-2">
-              <div class="container-fluid card-index" style="--bs-gutter-x: 0;">
-                  <div class="row">
-                      <div class="col-6 h-100">
-                          <img src="{% static 'images/cards/2_Examenes.jpg' %}" class="card-img-top img-card-index" alt="..." style="border-radius: 0.25rem;">
-                      </div>
-                      <div class="card-body col-6 card-body">
-                          <h5 class="card-title">Exámenes</h5>
-                          <p class="card-text">Ver resultados de exámenes realizados.</p>
-      
-                          {% if not user.is_authenticated %}
-                              <p class="m-4">Debe autenticarse para ver sus exámenes</p>
-                          {% endif %}
-      
-                          {% if is_patient and studies_medicals %}
-                              <a href="{% url 'studies_medicals:studiesmedicals_type' %}" class="btn btn-primary my-4">Ver mis exámenes</a>
-                          {% endif %}
-      
-                          {% if is_patient and not studies_medicals %}
-                              <p class="m-4">Usted aun no tiene exámenes</p> 
-                          {% endif %}
-      
-                          {% if is_medical %}
-                            <a href="{% url 'studies_medicals:studiesmedicals_create' %}" class="btn btn-primary my-4">Crear exámen</a><br>
-                            <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="">Ver exámenes</a>
-                          {% endif %}
-                      </div>  
-                  </div>
+
+        <div class="com-13 col-lg-6  mx-0 px-0 px-lg-2">
+          <div class="card mb-3" style="min-width: 260px;">
+            <div class="row g-0">
+              <div class="col-4">
+                <img src="{% static 'images/cards/2_Examenes.jpg' %}" class="img-fluid rounded-start object-fit-cover" alt="Estudios médicos" style="min-height: 200px; min-width:130px;">
               </div>
+              <div class="col-8">
+                <div class="card-body">
+                  <h5 class="card-title">Exámenes</h5>
+                  <p class="card-text">Ver resultados de exámenes.</p>
+                  
+                  {% if not user.is_authenticated %}
+                    <a href="{% url 'users:login' %}" class="btn btn-success my-4">Ir al portal</a>
+                  {% endif %}
+
+                  {% if is_patient and studies_medicals %}
+                    <a href="{% url 'studies_medicals:studiesmedicals_type' %}" class="btn btn-primary my-4">Ver mis exámenes</a>
+                  {% endif %}
+
+                  {% if is_patient and not studies_medicals %}
+                  <button class="btn btn-secondary my-4" disabled>Ver mis exámenes</button>
+ 
+                  {% endif %}
+
+                  {% if is_medical %}
+                    <a href="{% url 'studies_medicals:studiesmedicals_create' %}" class="btn btn-primary my-4">Crear exámen</a><br>
+                    <a href="{% url 'studies_medicals:studiesmedicals_list' %}" class="">Ver exámenes</a>
+                  {% endif %}              
+                  
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
