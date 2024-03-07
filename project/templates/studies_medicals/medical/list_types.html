@@ -1,38 +1,43 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Examenes</a></li>
-            {% if studie_medical %}
-            <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' patient.patient.id %}">{{ patient.patient }}</a></li>
-            {% endif %}
-            {% if type_studie %}
-            <li class="breadcrumb-item">{{ type_studie.type_studie.name }}</li>
-            {% endif %}
-        </ol>
-    </nav>
 
-    {% include 'components/messages.html' %}
+    <div class="mx-0 mx-lg-5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Examenes</a></li>
+                {% if patient %}
+                <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' patient.patient.id %}">{{ patient.patient }}</a></li>
+                {% endif %}
+                {% if type_studie %}
+                <li class="breadcrumb-item">{{ type_studie.type_studie.name }}</li>
+                {% endif %}
+            </ol>
+        </nav>
 
-    
-    {% if studies_medicals %}
-    <h1>Paciente : {{ patient.patient }}</h1>
-    <p>{{ type_studie.type_studie.name }}</p>
-        {% for studie_medical in studies_medicals %}
-        <div class="card w-100 mt-3">
-            <div class="card-body">
-                <h5 class="card-title">{{studie_medical.name}}</h5>
-                <p class="card-text">Ultimo realizado  {{ studie_medical.date_joined }}</p>
 
-                <a href="{% url 'studies_medicals:studiesmedicals_detail' studie_medical.id %}" class="btn btn-primary">Ver Resultados</a>
+        {% include 'components/messages.html' %}
+
+        
+        {% if studies_medicals %}
+        <h1>Paciente : {{ patient.patient }}</h1>
+        <p>{{ type_studie.type_studie.name }}</p>
+            {% for studie_medical in studies_medicals %}
+            <div class="card w-100 mt-3">
+                <div class="card-body">
+                    <h5 class="card-title">{{studie_medical.name}}</h5>
+                    <p class="card-text">Ultimo realizado  {{ studie_medical.date_joined }}</p>
+
+                    <a href="{% url 'studies_medicals:studiesmedicals_detail' studie_medical.id %}" class="btn btn-primary">Ver Resultados</a>
+                </div>
             </div>
-        </div>
-        {% endfor %}
-    {% else %}
-        <p class="mt-2 fs-4 fst-italic">No hay registros ingresados</p>
-    {% endif %}
+            {% endfor %}
+            <p class="mt-5 fw-semibold text-center">Total: {{ studies_medicals | length }}</p>
 
+        {% else %}
+            <p class="mt-2 fs-4">No hay registros ingresados</p>
+        {% endif %}
 
+    </div>
 {% endblock %}

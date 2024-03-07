@@ -1,29 +1,29 @@
 {% extends "medical_history/list.html" %}
 
 {% block nav %}
-<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
-            <i class="bi bi-house-door-fill text-primary"></i>
-            inicio</a>
-        </li>
-        <li class="breadcrumb-item active" aria-current="page">Historias clinicas</a></li>
-        
-    </ol>
-</nav>
-    
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                <i class="bi bi-house-door-fill text-primary"></i>
+                inicio</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">Historias clinicas</a></li>
+            
+        </ol>
+    </nav>
 {% endblock nav %}
 
 {% block search %}
-<h2 class="display-5 mb-4 fw-medium">Historiales médico</h2>
-    <!-- Sirve para buscar historias clinicas por paciente. Se pasa a la variable "consult" de la vista. -->
-    <div class="py-lg-4 text-center">
-        <form action="{% url 'medical_history:medicalhistory_list' %}" method="get">
-            <input name="consult" type="text" placeholder="Buscar por nombre o DNI...">
-        </form>
+    <div class="d-flex justify-content-between">
+        <h2 class="display-5 mb-4 fw-medium">Historiales médico</h2>
+        <!-- Sirve para buscar historias clinicas por paciente. Se pasa a la variable "consult" de la vista. -->
+        <div class="py-lg-4 text-center">
+            <form action="{% url 'medical_history:medicalhistory_list' %}" method="get">
+                <input name="consult" type="text" placeholder="Buscar por nombre o DNI...">
+            </form>
+        </div>
+
     </div>
-
-
 
 {% endblock search %}
        
@@ -55,6 +55,7 @@
             </td>
         </tr>
         
+        <!-- Modal -->
         <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -75,6 +76,5 @@
             </div>
         </div>
     {% endfor %}
-    <!-- Modal -->
 
 {% endblock table_body %}

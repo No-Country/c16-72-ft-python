@@ -8,7 +8,7 @@ def check_and_create_groups_and_models():
         Group.objects.get_or_create(name='Patients')
     except:
         pass
-  
+
     type_names = [
         "Exámenes de laboratorio",
         "Examen físico",

@@ -42,7 +42,7 @@ class RegisterView(View):
                     messages.warning(request, 'El DNI o el Email ya exiten', extra_tags="alert alert-danger")
                     return render(request, 'users/register.html', context={ 'form' : UserRegisterForm })
             else:
-                messages.warning(request, 'Las contrasenias no coinciden', extra_tags="alert alert-danger")
+                messages.warning(request, 'Las contraseñas no coinciden', extra_tags="alert alert-danger")
                 return render(request, 'users/register.html', context={ 'form' : UserRegisterForm })
 
 class LoginView(View):
@@ -58,7 +58,7 @@ class LoginView(View):
             user = authenticate(request, username=request.POST['username'], password=request.POST['password'])
             
             if user is None:
-                messages.warning(request, 'Email o contrasenia incorrectos', extra_tags="alert alert-danger")
+                messages.warning(request, 'Email o contraseña incorrectos', extra_tags="alert alert-danger")
                 return render(request, 'users/login.html', context={'form' : form })
             else:
                 login(request, user)

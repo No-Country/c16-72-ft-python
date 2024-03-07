@@ -1,31 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {% block nav %}
-    {% endblock nav %}
-    
-    {% include 'components/messages.html' %}
-    
-    {% block search %}{% endblock search %}
-    {% if object_list %}
+    <div class="mx-0 mx-lg-5">
+        {% block nav %}
+        {% endblock nav %}
 
- 
-        {% block list %}
-            <div class="container">
-                <table class="table">
-                    <thead>
-                        {% block table_header %}
-                        {% endblock table_header %}
-                    </thead>
-                    <tbody>
-                        {% block table_body %}
-                        {% endblock table_body %}
-                    </tbody>
-                </table>
-            </div>
-            <p class="mt-5 fw-semibold text-center">Total: {{ object_list | length }}</p>
-        {% endblock list %}
-    {% else %}
-        <p class="fs-4 fst-italic">No hay registros ingresados</p>
-    {% endif %}
+        {% include 'components/messages.html' %}
+        
+        {% block search %}{% endblock search %}
+        {% if object_list %}
+    
+     
+            {% block list %}
+                <div class="table-responsive" >
+                    <table class="table table-striped">
+                        <thead>
+                            {% block table_header %}
+                            {% endblock table_header %}
+                        </thead>
+                        <tbody>
+                            {% block table_body %}
+                            {% endblock table_body %}
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-5 fw-semibold text-center">Total: {{ object_list | length }}</p>
+            {% endblock list %}
+        {% else %}
+            <p class="fs-4 text-center">No hay registros ingresados</p>
+        {% endif %}
+    </div>
 {% endblock content %}

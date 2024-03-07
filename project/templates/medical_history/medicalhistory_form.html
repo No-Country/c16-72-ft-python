@@ -2,7 +2,7 @@
 {% load widget_tweaks %}
 
 {% block content %}
-    <div class="container p-5">
+    <div class="mx-0 mx-lg-5">
 
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
             <ol class="breadcrumb">
@@ -11,9 +11,9 @@
                     inicio</a>
                 </li>
                 {% if request.path == '/clinic/history/create/' %}
-                    <li class="breadcrumb-item active" aria-current="page">Crear historial médico</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Crear historial médico</a></li>
                 {% else %}
-                    <li class="breadcrumb-item active" aria-current="page">Actualizar historial médico</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Actualizar historial médico</a></li>
                 {% endif %}
                 
             </ol>
