@@ -5,9 +5,9 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
             <i class="bi bi-house-door-fill text-primary"></i>
-            inicio</a>
+            Inicio</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Historias clinicas</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Historiales médicos</a></li>
         
     </ol>
 </nav>
@@ -15,7 +15,7 @@
 {% endblock nav %}
 
 {% block search %}
-<h2 class="display-5 mb-4 fw-medium">Historiales médico</h2>
+<h2 class="display-5 mb-4 fw-medium">Historiales médicos</h2>
     <!-- Sirve para buscar historias clinicas por paciente. Se pasa a la variable "consult" de la vista. -->
     <div class="py-lg-4 text-center">
         <form action="{% url 'medical_history:medicalhistory_list' %}" method="get">

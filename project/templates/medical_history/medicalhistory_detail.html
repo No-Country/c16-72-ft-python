@@ -8,7 +8,7 @@
          <ol class="breadcrumb">
              <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
                  <i class="bi bi-house-door-fill text-primary"></i>
-                 inicio</a>
+                 Inicio</a>
              </li>
   
              <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
@@ -19,7 +19,7 @@
          <ol class="breadcrumb">
              <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
                  <i class="bi bi-house-door-fill text-primary"></i>
-                 inicio</a>
+                 Inicio</a>
              </li>
              <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historiales médicos</a></li>
              <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
@@ -27,7 +27,7 @@
      </nav>
  {% endif %}
   <h2 class="display-5 fw-medium">Historial médico</h2>
-     
+
   <div class="containter">
     <p>Actualización: {{object.date_joined}}</p>
     <br>
