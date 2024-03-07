@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2">
+<div class="mx-0 mx-lg-5">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
         <ol class="breadcrumb">
 
             <li class="breadcrumb-item"><i class="bi bi-house-door-fill text-primary"></i>
@@ -28,7 +29,7 @@
     {% elif is_patient %}
         <h1>Paciente : {{ request.user.name }} {{ request.user.last_name }}</h1>
     {% endif %}
-    <p>Exámenes Médicos</p>
+    <p class="fw-bold">Exámenes Médicos</p>
         {% for type_studie in types_studies %}
         <div class="card w-100 mt-3">
             <div class="card-body">
@@ -42,7 +43,9 @@
             </div>
         </div>
         {% endfor %}
+        <p class="mt-5 fw-semibold text-center">Total: {{ types_studies | length }}</p>
     {% else %}
-        <p class="mt-2 fs-4 fst-italic">No hay registros ingresados</p>
+        <p class="mt-2 fs-4 text-center">No hay registros ingresados</p>
     {% endif %}
+</div>
 {% endblock %}

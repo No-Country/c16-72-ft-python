@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="mx-0 mx-lg-5">
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
@@ -16,25 +17,30 @@
     {% include 'components/messages.html' %}
     
     <h1 class="display-5 fw-medium">Resultados</h1>
-    <p>{{ studie_medical.type_studie }}</p>
 
-    <p>Profesional solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
-    <p>Paciente: {{ studie_medical.patient }}</p>
-    <p>Examen: {{ studie_medical.name }}</p>
-    <p>Observaciones: {{ studie_medical.observations }}</p>
-    <p>DNI: {{ studie_medical.patient.patient.dni }}</p>
-    <p>Edad: {{ studie_medical.patient.patient.age }}</p>
-    <p> Sexo: {{ studie_medical.patient.patient.sex }}</p>
-    <p>Toma muestra: {{ studie_medical.date_joined }}</p>
+    <div class="">
+        <p class="fw-bold">{{ studie_medical.type_studie }}</p>
+        <br>
+        <p>Examen: {{ studie_medical.name }}</p>
+        <p>Toma muestra: {{ studie_medical.date_joined }}</p>
+        <p>Profesional solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
+        <p>Paciente: {{ studie_medical.patient }}</p>
+        <p>DNI: {{ studie_medical.patient.patient.dni }}</p>
+        <p>Edad: {{ studie_medical.patient.patient.age }}</p>
+        <p> Sexo: {{ studie_medical.patient.patient.sex }}</p>
+        <p>Observaciones: {{ studie_medical.observations }}</p>
+    </div>
 
     {% if studie_medical.result %}
-        <img  class="img-fluid" src="{{ studie_medical.result.url }}" alt="imagen">
+        <img  class="img-fluid mb-3" src="{{ studie_medical.result.url }}" alt="imagen">
     {% endif %}
 
-    <div class="mt-2 d-flex  justify-content-between">
+
+    <div class="d-flex justify-content-end gap-2">
+
         {% if studie_medical.medical.id == request.user.id%}
-        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary">Actualizar</a>
-        <a class="btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
+        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary mr-2">Actualizar</a>
+        <a class="mx-2 btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
         {% endif %}
     </div>
 
@@ -57,4 +63,5 @@
             </div>
         </div>
     </div>
+</div>
 {% endblock content %}

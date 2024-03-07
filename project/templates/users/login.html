@@ -3,48 +3,50 @@
 {% load static %}
 
 {% block content %}
-    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
-                <i class="bi bi-house-door-fill text-primary"></i>
-                Inicio</a>
-            </li>
+    <div class="mx-0 mx-lg-5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+                    <i class="bi bi-house-door-fill text-primary"></i>
+                    Inicio</a>
+                </li>
 
-            <li class="breadcrumb-item active" aria-current="page">Ingresar</li>
-        </ol>
-    </nav>
-    <div class="container">
-        
-        {% include 'components/messages.html' %}
-        <div class="px-0 px-md-5 mx-0 mx-md-5 mb-5">
-            <form method="post" action="" enctype="multipart/form-data" class="align-items-center px-3 px-md-5 mx-0 mx-lg-5 pb-4 form-login">
-                
-                {% csrf_token %}
-                <div class="d-flex justify-content-center py-2">
-                    <img src="{% static 'images/logos/logo_png.png' %}" style="width: 300px;" alt="Clinica Cousin">
-                </div>
-                
-                {% for field in form %}
-                    <div class="form-group">
-                        {{ field.label_tag }}
-                        {{ field|add_class:"form-control" }}
-                        {% for error in field.errors %}
-                            <div class="alert alert-danger">{{ error }}</div>
-                        {% endfor %}
+                <li class="breadcrumb-item active" aria-current="page">Ingresar</li>
+            </ol>
+        </nav>
+        <div class="container">
+            
+            {% include 'components/messages.html' %}
+            <div class="px-0 px-md-5 mx-0 mx-md-5 mb-5">
+                <form method="post" action="" enctype="multipart/form-data" class="align-items-center px-3 px-md-5 mx-0 mx-lg-5 pb-4 form-login">
+                    
+                    {% csrf_token %}
+                    <div class="d-flex justify-content-center py-2">
+                        <img src="{% static 'images/logos/logo_png.png' %}" style="width: 300px;" alt="Clinica Cousin">
                     </div>
-                {% endfor %}
-        
-                {% if form.non_field_errors %}
-                    <div class="alert alert-danger mt-3">
-                        {% for error in form.non_field_errors %}
-                            {{ error }}
-                        {% endfor %}
-                    </div>
-                {% endif %}
-                
-                <button type="submit" class="btn btn-primary mt-4">Ingresar</button>
+                    
+                    {% for field in form %}
+                        <div class="form-group">
+                            {{ field.label_tag }}
+                            {{ field|add_class:"form-control" }}
+                            {% for error in field.errors %}
+                                <div class="alert alert-danger">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+            
+                    {% if form.non_field_errors %}
+                        <div class="alert alert-danger mt-3">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    
+                    <button type="submit" class="btn btn-primary mt-4">Ingresar</button>
 
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock content %}

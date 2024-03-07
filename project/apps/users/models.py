@@ -42,9 +42,9 @@ class CustomUserManager(UserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     
     SEX_USER = (
-        ('Male', 'Male'),
-        ('Female', 'Female'),
-        ('Other', 'Other'),
+        ('Masculino', 'Masculino'),
+        ('Femenino', 'Femenino'),
+        ('Otro', 'Otro'),
     )
     
     email = models.CharField(max_length=100, unique=True)
@@ -52,7 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     age = models.PositiveIntegerField(default=18)
-    sex = models.CharField(max_length=10, choices=SEX_USER, default='Male')
+    sex = models.CharField(max_length=10, choices=SEX_USER, default='Masculino')
     date_joined = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
     objects = CustomUserManager()

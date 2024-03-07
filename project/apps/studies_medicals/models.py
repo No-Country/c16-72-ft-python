@@ -22,9 +22,9 @@ class StudiesMedicals(models.Model):
     type_studie = models.ForeignKey(TypeStudieMedical, on_delete=models.CASCADE)
     name = models.CharField(max_length=50, default="Examen")
     result = models.FileField(upload_to='estudios_resultados/', null=True, blank=True)
-    report = models.TextField(null=True, blank=True)
+    report = models.TextField(default="Ninguno")
     date_joined = models.DateTimeField(auto_now_add=True)
-    observations = models.TextField(blank=True, null=True)
+    observations = models.TextField(default="Ninguno")
     
     class Meta:
         ordering = ['-date_joined']
