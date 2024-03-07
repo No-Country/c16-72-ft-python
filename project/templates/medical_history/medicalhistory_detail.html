@@ -3,30 +3,31 @@
 
 {% block content %}
 
+  <div class="mx-0 mx-lg-5">
  {% if not is_medical %}
- <div class="container-fluid">
-     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
-         <ol class="breadcrumb">
-             <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
-                 <i class="bi bi-house-door-fill text-primary"></i>
-                 inicio</a>
-             </li>
-  
-             <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
-         </ol>
-     </nav>
- {% else %}
-     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
-         <ol class="breadcrumb">
-             <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
-                 <i class="bi bi-house-door-fill text-primary"></i>
-                 inicio</a>
-             </li>
-             <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historiales médicos</a></li>
-             <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
-         </ol>
-     </nav>
- {% endif %}
+ <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+      <i class="bi bi-house-door-fill text-primary"></i>
+      inicio</a>
+    </li>
+    
+    <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
+  </ol>
+</nav>
+{% else %}
+<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+      <i class="bi bi-house-door-fill text-primary"></i>
+      inicio</a>
+    </li>
+    <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historiales médicos</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
+  </ol>
+</nav>
+{% endif %}
+
   <h2 class="display-5 fw-medium">Historial médico</h2>
      
   <div class="">
