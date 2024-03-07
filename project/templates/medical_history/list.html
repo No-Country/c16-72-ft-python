@@ -11,8 +11,8 @@
 
  
         {% block list %}
-            <div class="container">
-                <table class="table">
+            <div class="container-fluid">
+                <table class="table table-striped">
                     <thead>
                         {% block table_header %}
                         {% endblock table_header %}
@@ -26,6 +26,6 @@
             <p class="mt-5 fw-semibold text-center">Total: {{ object_list | length }}</p>
         {% endblock list %}
     {% else %}
-        <p class="fs-4 fst-italic">No hay registros ingresados</p>
+        <p class="fs-4 text-center">No hay registros ingresados</p>
     {% endif %}
 {% endblock content %}

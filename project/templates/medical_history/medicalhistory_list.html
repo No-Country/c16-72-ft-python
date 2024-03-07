@@ -15,15 +15,16 @@
 {% endblock nav %}
 
 {% block search %}
-<h2 class="display-5 mb-4 fw-medium">Historiales médico</h2>
-    <!-- Sirve para buscar historias clinicas por paciente. Se pasa a la variable "consult" de la vista. -->
-    <div class="py-lg-4 text-center">
-        <form action="{% url 'medical_history:medicalhistory_list' %}" method="get">
-            <input name="consult" type="text" placeholder="Buscar por nombre o DNI...">
-        </form>
+    <div class="d-flex justify-content-between">
+        <h2 class="display-5 mb-4 fw-medium">Historiales médico</h2>
+        <!-- Sirve para buscar historias clinicas por paciente. Se pasa a la variable "consult" de la vista. -->
+        <div class="py-lg-4 text-center">
+            <form action="{% url 'medical_history:medicalhistory_list' %}" method="get">
+                <input name="consult" type="text" placeholder="Buscar por nombre o DNI...">
+            </form>
+        </div>
+
     </div>
-
-
 
 {% endblock search %}
        
