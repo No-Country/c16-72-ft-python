@@ -3,11 +3,14 @@
 <div align=center >
     <img src="./project/static_dev/images/logos/logo_png.png" class="img-logo" alt="Centro médico Cousin" height=250 >
 </div>
-<hr>
 
-<h2 align="center">
-Puedes acceder a la aplicación web desplegada en: <br> <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/Centro%20a%20médico%20Cousin-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin"></a>
-</h2>
+<br>
+<br>
+<div align=center >
+    <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/Deploy-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin" style="height: 30px;"></a>
+    <a href="https://www.figma.com/file/074dMWcYVHDnTCOBEtKUmy/Proyecto-CM-Cousin?type=design&node-id=0-1&mode=design&t=TEvUbK6RN9kzfOlr-0"><img src="https://img.shields.io/badge/Dise%C3%B1o-%23F24E1E.svg?logo=figma&logoColor=white" alt="Diseño" style="height: 30px;"></a>
+</div>
+
 <hr>
 
 <h2 align="center">Equipo de Desarrollo</h2>
@@ -71,14 +74,20 @@ Puedes acceder a la aplicación web desplegada en: <br> <a href="https://cmcousi
 
 <h2 align="center">Tecnologías utilizadas</h2>
 <div align="center">
-  <img src="https://img.shields.io/badge/Python-%233776AB.svg?logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Django-%23092E20.svg?logo=django&logoColor=white" alt="Django">
-  <img src="https://img.shields.io/badge/HTML/CSS-%23E34F26.svg?logo=html5&logoColor=white" alt="HTML/CSS">
-  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black" alt="JavaScript">
-  <img src="https://img.shields.io/badge/jQuery-%230769AD.svg?logo=jquery&logoColor=white" alt="jQuery">
-  <img src="https://img.shields.io/badge/MySQL-%2300758F.svg?logo=mysql&logoColor=white" alt="MySQL">
+  <img src="https://img.shields.io/badge/Python-%233776AB.svg?logo=python&logoColor=white" alt="Python" style="height: 30px;">
+  <img src="https://img.shields.io/badge/Django-%23092E20.svg?logo=django&logoColor=white" alt="Django" style="height: 30px;">
+  <img src="https://img.shields.io/badge/HTML/CSS-%23E34F26.svg?logo=html5&logoColor=white" alt="HTML/CSS" style="height: 30px;">
+  <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black" alt="JavaScript" style="height: 30px;">
+  <img src="https://img.shields.io/badge/jQuery-%230769AD.svg?logo=jquery&logoColor=white" alt="jQuery" style="height: 30px;">
+  <img src="https://img.shields.io/badge/MySQL-%2300758F.svg?logo=mysql&logoColor=white" alt="MySQL" style="height: 30px;">
 </div>
 
+<h2 align="center">Diseño y organización</h2>
+<div align="center">
+    <img src="https://img.shields.io/badge/Figma-F24E1E?logo=figma&logoColor=white" alt="Figma" style="height: 30px;">
+    <img src="https://img.shields.io/badge/Slack-4A154B?logo=slack&logoColor=white" alt="Slack" style="height: 30px;">
+    <img src="https://img.shields.io/badge/Trello-0079BF?logo=trello&logoColor=white" alt="Trello" style="height: 30px;">
+</div>
 <hr>
 
 <h2 align="center">Instalación y ejecución</h2>
