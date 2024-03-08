@@ -88,24 +88,22 @@ class ListStudiesMedicalsView(LoginRequiredMixin, View):
         else:
             return render(request, 'components/404.html')
 
-class StudieMedicalPatientPDF(LoginRequiredMixin, View):
+class DownloadStudieMedicalFileView(View, LoginRequiredMixin):
     def get(self, request, pk, *args, **kwargs):
-        if get_rol_user(request.user, 'Patients'):
-            try:
-                studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
-                context = {'studie_medical': studie_medical}
-                pdf = render_to_pdf('studies_medicals/patient/studie_medical_pdf_patient.html', context)
-                if pdf:
-                    response = HttpResponse(pdf, content_type='application/pdf')
-                    filename = f'estudio_medico_{studie_medical.pk}.pdf'
-                    content = f'attachment; filename="{filename}"'
-                    response['Content-Disposition'] = content
+        try:
+            studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+
+            # Verificar si el archivo existe
+            if studie_medical.result:
+                file_path = studie_medical.result.path
+                with open(file_path, 'rb') as file:
+                    response = HttpResponse(file.read(), content_type='application/octet-stream')
+                    response['Content-Disposition'] = f'attachment; filename="{studie_medical.result.name}"'
                     return response
-                else:
-                    return HttpResponse("Error al generar el PDF", status=500)
-            except Exception as e:
-                return render(request, 'components/404.html')
-        else:
+            else:
+                return HttpResponse("El archivo no existe.", status=404)
+
+        except Exception as e:
             return render(request, 'components/404.html')
 
 class DetailStudieMedicalView(LoginRequiredMixin, View):

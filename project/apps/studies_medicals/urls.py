@@ -4,7 +4,7 @@ from .views import (
     ListTypeStudieMedicalView,
     ListStudiesMedicalsView,
     ListStudiesMedicalsInTypesView,
-    StudieMedicalPatientPDF,
+    DownloadStudieMedicalFileView,
     DetailStudieMedicalView,
     CreateStudieMedicalView, 
     UpdateStudieMedicalView, 
@@ -20,7 +20,7 @@ urlpatterns = [
     #urls paciente
     path('type/', ListTypeStudieMedicalView.as_view(), name='studiesmedicals_type'),
     path('type/studies/<int:pk_type>', ListStudiesMedicalsInTypesView.as_view(), name='studiesmedicals_studies'),
-    path('pdf/<int:pk>', StudieMedicalPatientPDF.as_view(), name='studiesmedicals_pdf_patient'),
+    path('pdf/<int:pk>', DownloadStudieMedicalFileView.as_view(), name='studiesmedicals_download'),
     
     #urls medico
     path('type/<int:pk>', ListTypeStudieMedicalView.as_view(), name='studiesmedicals_type'),

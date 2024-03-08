@@ -37,10 +37,13 @@
 
 
     <div class="d-flex justify-content-end gap-2">
+        {% if studie_medical.result %}
+            <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-primary">Descargar</a>
+        {% endif %}
 
         {% if studie_medical.medical.id == request.user.id%}
-        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary mr-2">Actualizar</a>
-        <a class="mx-2 btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
+            <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary mr-2">Actualizar</a>
+            <a class="mx-2 btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
         {% endif %}
     </div>
 
