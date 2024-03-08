@@ -47,3 +47,10 @@ def get_users_studies_medicals(studies_medicals):
             seen_users_studies_medicals[studie_medical.patient.id] = studie_medical.patient
     
     return user_studies_medicals
+
+
+def validate_image_extension(filename):    
+    if filename.endswith(".jpg") or filename.endswith(".jpeg") or filename.endswith(".png"):
+        return True
+    else:
+        return False

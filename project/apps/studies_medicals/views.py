@@ -10,7 +10,7 @@ from .models import StudiesMedicals, TypeStudieMedical
 from users.models import User
 from .forms import StudieMedicalForm
 from medical_history.models import MedicalHistory
-from .utils import render_to_pdf, get_rol_user, get_types_studies_user, get_users_studies_medicals
+from .utils import render_to_pdf, get_rol_user, get_types_studies_user, get_users_studies_medicals, validate_image_extension
 
 # Create your views here.
 
@@ -115,6 +115,10 @@ class DetailStudieMedicalView(LoginRequiredMixin, View):
         if get_rol_user(request.user, 'Medicals'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                
+                if not validate_image_extension(studie_medical.result.name):
+                    studie_medical.result = None
+                    
                 context['studie_medical'] = studie_medical
                 return render(request, 'studies_medicals/medical/detail.html', context)
             except:
