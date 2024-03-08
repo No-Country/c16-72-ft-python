@@ -32,15 +32,15 @@
     </div>
 
     {% if studie_medical.result and not studie_medical.file %}
-        <img  class="img-fluid mb-3" src="{{ studie_medical.result.url }}" alt="imagen">
+        <img  class="img-fluid mb-3" src="{{ studie_medical.result.url }}" alt="imagen" style="max-width: 90vw;">
 
         <div class="d-flex justify-content-end gap-2">
-            <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-warning text-white">Descargar</a>
+            <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-success">Descargar</a>
 
     {% elif studie_medical.result and studie_medical.file %}
         
         <div class="d-flex justify-content-end gap-2">
-            <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-warning text-white">Descargar</a>
+            <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-success">Descargar</a>
 
     
     {% else %}

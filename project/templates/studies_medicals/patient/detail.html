@@ -30,18 +30,18 @@
             <p>Observaciones: {{ studie_medical.observations }}</p>
         </div>
         {% if studie_medical.result and not studie_medical.file %}
-            <img  class="img-fluid mb-3" src="{{ studie_medical.result.url }}" alt="imagen">
+            <img  class="img-fluid mb-3" src="{{ studie_medical.result.url }}" alt="imagen" style="max-width: 90vw;">
 
 
             <div class="mt-2 d-flex  justify-content-end">
-                <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-primary">Descargar</a>
+                <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-success">Descargar</a>
             </div>
         {% endif %}
 
         {% if studie_medical.result and studie_medical.file %}
         
             <div class="mt-2 d-flex  justify-content-end">
-                <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-primary">Descargar</a>
+                <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-success">Descargar</a>
             </div>
         {% endif %}
 
