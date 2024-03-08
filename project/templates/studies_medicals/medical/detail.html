@@ -31,18 +31,30 @@
         <p>Observaciones: {{ studie_medical.observations }}</p>
     </div>
 
-    {% if studie_medical.result %}
+    {% if studie_medical.result and not studie_medical.file %}
         <img  class="img-fluid mb-3" src="{{ studie_medical.result.url }}" alt="imagen">
+
+        <div class="d-flex justify-content-end gap-2">
+            <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-warning text-white">Descargar</a>
+
+    {% elif studie_medical.result and studie_medical.file %}
+        
+        <div class="d-flex justify-content-end gap-2">
+            <a href="{% url 'studies_medicals:studiesmedicals_download' studie_medical.id %}"  class="btn btn-warning text-white">Descargar</a>
+
+    
+    {% else %}
+            
+        <div class="d-flex justify-content-end gap-2">
+
     {% endif %}
 
+            {% if studie_medical.medical.id == request.user.id%}
+            <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary">Actualizar</a>
+            <a class="btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
+            {% endif %}
+        </div>
 
-    <div class="d-flex justify-content-end gap-2">
-
-        {% if studie_medical.medical.id == request.user.id%}
-        <a href="{% url 'studies_medicals:studiesmedicals_update' studie_medical.id %}"  class="btn btn-primary mr-2">Actualizar</a>
-        <a class="mx-2 btn btn-danger" href="{% url 'studies_medicals:studiesmedicals_delete' studie_medical.id %}" class="link-danger" data-toggle="modal" data-target="#confirmDeleteModal">Eliminar</a>
-        {% endif %}
-    </div>
 
     <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

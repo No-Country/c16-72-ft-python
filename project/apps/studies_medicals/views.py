@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -10,7 +10,7 @@ from .models import StudiesMedicals, TypeStudieMedical
 from users.models import User
 from .forms import StudieMedicalForm
 from medical_history.models import MedicalHistory
-from .utils import render_to_pdf, get_rol_user, get_types_studies_user, get_users_studies_medicals, validate_image_extension
+from .utils import get_rol_user, get_types_studies_user, get_users_studies_medicals, validate_image_extension
 
 # Create your views here.
 
@@ -88,21 +88,13 @@ class ListStudiesMedicalsView(LoginRequiredMixin, View):
         else:
             return render(request, 'components/404.html')
 
-class StudieMedicalPatientPDF(LoginRequiredMixin, View):
+class StudieMedicalFileDownload(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
-        if get_rol_user(request.user, 'Patients'):
+        if get_rol_user(request.user, 'Patients') or get_rol_user(request.user, 'Medicals'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
-                context = {'studie_medical': studie_medical}
-                pdf = render_to_pdf('studies_medicals/patient/studie_medical_pdf_patient.html', context)
-                if pdf:
-                    response = HttpResponse(pdf, content_type='application/pdf')
-                    filename = f'estudio_medico_{studie_medical.pk}.pdf'
-                    content = f'attachment; filename="{filename}"'
-                    response['Content-Disposition'] = content
-                    return response
-                else:
-                    return HttpResponse("Error al generar el PDF", status=500)
+                path_file = studie_medical.result.path
+                return FileResponse(open(path_file, 'rb'), as_attachment=True)
             except Exception as e:
                 return render(request, 'components/404.html')
         else:
@@ -117,7 +109,7 @@ class DetailStudieMedicalView(LoginRequiredMixin, View):
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
                 
                 if not validate_image_extension(studie_medical.result.name):
-                    studie_medical.result = None
+                    studie_medical.file = True
                     
                 context['studie_medical'] = studie_medical
                 return render(request, 'studies_medicals/medical/detail.html', context)
@@ -127,6 +119,9 @@ class DetailStudieMedicalView(LoginRequiredMixin, View):
         if get_rol_user(request.user, 'Patients'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                if not validate_image_extension(studie_medical.result.name):
+                    studie_medical.file = True
+                    
                 context['studie_medical'] = studie_medical
                 return render(request, 'studies_medicals/patient/detail.html', context)
             except:
