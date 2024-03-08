@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponse, FileResponse
 from django.db.models import Q
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required, user_passes_test
@@ -10,7 +10,7 @@ from .models import StudiesMedicals, TypeStudieMedical
 from users.models import User
 from .forms import StudieMedicalForm
 from medical_history.models import MedicalHistory
-from .utils import render_to_pdf, get_rol_user, get_types_studies_user, get_users_studies_medicals
+from .utils import get_rol_user, get_types_studies_user, get_users_studies_medicals, validate_image_extension
 
 # Create your views here.
 
@@ -88,22 +88,17 @@ class ListStudiesMedicalsView(LoginRequiredMixin, View):
         else:
             return render(request, 'components/404.html')
 
-class DownloadStudieMedicalFileView(View, LoginRequiredMixin):
+
+class StudieMedicalFileDownload(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
-        try:
-            studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
-
-            # Verificar si el archivo existe
-            if studie_medical.result:
-                file_path = studie_medical.result.path
-                with open(file_path, 'rb') as file:
-                    response = HttpResponse(file.read(), content_type='application/octet-stream')
-                    response['Content-Disposition'] = f'attachment; filename="{studie_medical.result.name}"'
-                    return response
-            else:
-                return HttpResponse("El archivo no existe.", status=404)
-
-        except Exception as e:
+        if get_rol_user(request.user, 'Patients') or get_rol_user(request.user, 'Medicals'):
+            try:
+                studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                path_file = studie_medical.result.path
+                return FileResponse(open(path_file, 'rb'), as_attachment=True)
+            except Exception as e:
+                return render(request, 'components/404.html')
+        else:
             return render(request, 'components/404.html')
 
 class DetailStudieMedicalView(LoginRequiredMixin, View):
@@ -113,6 +108,10 @@ class DetailStudieMedicalView(LoginRequiredMixin, View):
         if get_rol_user(request.user, 'Medicals'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                
+                if not validate_image_extension(studie_medical.result.name):
+                    studie_medical.file = True
+                    
                 context['studie_medical'] = studie_medical
                 return render(request, 'studies_medicals/medical/detail.html', context)
             except:
@@ -121,6 +120,9 @@ class DetailStudieMedicalView(LoginRequiredMixin, View):
         if get_rol_user(request.user, 'Patients'):
             try:
                 studie_medical = get_object_or_404(StudiesMedicals, pk=pk)
+                if not validate_image_extension(studie_medical.result.name):
+                    studie_medical.file = True
+                    
                 context['studie_medical'] = studie_medical
                 return render(request, 'studies_medicals/patient/detail.html', context)
             except:
