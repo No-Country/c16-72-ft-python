@@ -3,11 +3,14 @@
 <div align=center >
     <img src="./project/static_dev/images/logos/logo_png.png" class="img-logo" alt="Centro médico Cousin" height=250 >
 </div>
-<hr>
 
-<h2 align="center">
-Puedes acceder a la aplicación web desplegada en: <br> <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/Centro%20a%20médico%20Cousin-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin"></a>
-</h2>
+<br>
+<br>
+<div align=center >
+    <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/deployment-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin" style="height: 30px;"></a>
+    <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/Dise%C3%B1o-%23F24E1E.svg?logo=figma&logoColor=white" alt="Diseño" style="height: 30px;"></a>
+</div>
+
 <hr>
 
 <h2 align="center">Equipo de Desarrollo</h2>
