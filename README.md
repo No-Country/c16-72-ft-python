@@ -8,7 +8,7 @@
 <br>
 <div align=center >
     <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/deployment-%230082CE.svg?logo=google-chrome&logoColor=white" alt="Centro médico Cousin" style="height: 30px;"></a>
-    <a href="https://cmcousin.pythonanywhere.com/"><img src="https://img.shields.io/badge/Dise%C3%B1o-%23F24E1E.svg?logo=figma&logoColor=white" alt="Diseño" style="height: 30px;"></a>
+    <a href="https://www.figma.com/file/074dMWcYVHDnTCOBEtKUmy/Proyecto-CM-Cousin?type=design&node-id=0-1&mode=design&t=TEvUbK6RN9kzfOlr-0"><img src="https://img.shields.io/badge/Dise%C3%B1o-%23F24E1E.svg?logo=figma&logoColor=white" alt="Diseño" style="height: 30px;"></a>
 </div>
 
 <hr>
