@@ -4,29 +4,21 @@
 {% block content %}
 
   <div class="mx-0 mx-lg-5">
- {% if not is_medical %}
-     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2 mb-2">
-         <ol class="breadcrumb">
-             <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
-                 <i class="bi bi-house-door-fill text-primary"></i>
-                 Inicio</a>
-             </li>
-  
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
+          <i class="bi bi-house-door-fill text-primary"></i>
+          Inicio</a>
+        </li>
+        {% if not is_medical %}
              <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
-         </ol>
-     </nav>
- {% else %}
-     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2 mb-2">
-         <ol class="breadcrumb">
-             <li class="breadcrumb-item text-primary"><a href="{% url 'home:index' %}">
-                 <i class="bi bi-house-door-fill text-primary"></i>
-                 Inicio</a>
-             </li>
-             <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historiales médicos</a></li>
-             <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
-         </ol>
-     </nav>
- {% endif %}
+        {% else %}
+        <li class="breadcrumb-item text-primary"><a href="{% url 'medical_history:medicalhistory_list' %}">Historiales médicos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">{{ object.patient.name }} {{ object.patient.last_name }}</li>
+        {% endif %}
+      </ol>
+    </nav>
+
   <h2 class="display-5 fw-medium">Historial médico</h2>
 
   <div class="containter">
