@@ -2,14 +2,6 @@ body{
   position: relative;padding-bottom:15em; min-height:100vh;
 }
 
-@media (max-width: 767px) {
-    .img-cropped img {
-      width: 120px; /* Ancho deseado para la imagen recortada en dispositivos móviles */
-      height: auto;
-    }
-  }
-  
-
 .card-index{
   background-color: #fff;
   background-clip: border-box;
@@ -65,11 +57,44 @@ textarea{
   }
 }
 
+@media (min-width: 1000px) {
+  .form-login {
+    padding: 20px 100px 40px 100px !important;
+  }
+  .logo-index{
+    margin-left: 80px;
+  }
+  .card-historias{
+    margin-left:83px;
+    margin-right: 18px;
+  }
+  .card-examenes{
+    margin-right: 83px;
+    margin-left: 18px;
+  }
+  .title-carousel{
+    font-size: 46px;
+  }
+  .p-carousel{
+    font-size:20px;
+  }
+  .div-text-carousel{
+    margin-bottom: 100px; 
+  }
+}
+
 @media (max-width: 1024px) {
   .carousel,
   .carousel-inner,
   .carousel-item {
     height: 500px; 
+  }
+}
+
+@media (max-width: 767px) {
+  .img-cropped img {
+    width: 120px; 
+    height: auto;
   }
 }
 
@@ -111,31 +136,5 @@ textarea{
   }
 }
 
-
-@media (min-width: 1000px) {
-  .form-login {
-    padding: 20px 100px 40px 100px !important;
-  }
-  .logo-index{
-    margin-left: 80px;
-  }
-  .card-historias{
-    margin-left:83px;
-    margin-right: 18px;
-  }
-  .card-examenes{
-    margin-right: 83px;
-    margin-left: 18px;
-  }
-  .title-carousel{
-    font-size: 46px;
-  }
-  .p-carousel{
-    font-size:20px;
-  }
-  .div-text-carousel{
-    margin-bottom: 100px; 
-  }
-}
 
 
