@@ -4,9 +4,12 @@
     <div class="mx-0 mx-lg-5">
         {% include 'components/messages.html' %}
         
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2 mb-2">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'home:index' %}">
+                <i class="bi bi-house-door-fill text-primary"></i>
+                Inicio
+            </a></li>
                 <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' %}">{{ request.user.name }} {{ request.user.last_name }}</a></li>
                 <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_studies' pk_type=studie_medical.type_studie.id %}">{{ studie_medical.type_studie.name }}</a></li>
                 <li class="breadcrumb-item">Resultados</li>
@@ -15,11 +18,11 @@
 
         <h1 class="display-5 fw-medium">Resultados</h1>
         <div class="">
-            <p class="fw-bold">{{ studie_medical.type_studie }}</p>
+            <h5 class="mb-2" class="fw-bold">{{ studie_medical.type_studie }}</h5>
             <br>
             <p>Examen: {{ studie_medical.name }}</p>
             <p>Toma muestra: {{ studie_medical.date_joined }}</p>
-            <p>Profesional solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
+            <p>Profesional Solicitante: {{ studie_medical.medical.name }} {{ studie_medical.medical.last_name }}</p>
             <p>Paciente: {{ studie_medical.patient }}</p>
             <p>DNI: {{ studie_medical.patient.patient.dni }}</p>
             <p>Edad: {{ studie_medical.patient.patient.age }}</p>

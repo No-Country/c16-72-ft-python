@@ -2,9 +2,12 @@
 {% load static %}
 {% block content %}
     <div class="mx-0 mx-lg-5">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-4 mb-5">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mt-2 mb-2">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{% url 'home:index' %}">Home</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'home:index' %}">
+            <i class="bi bi-house-door-fill text-primary"></i>
+            Inicio
+        </a></li>
                 <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' %}">{{ request.user.name }} {{ request.user.last_name }}</a></li>
                 <li class="breadcrumb-item">{{ type_studie.type_studie.name }}</li>
             </ol>
@@ -15,14 +18,14 @@
         
         {% if studies_medicals %}
         <h1>Paciente : {{ request.user.name }} {{ request.user.last_name }}</h1>
-        <p>{{ type_studie.type_studie.name }}</p>
+        <h5>{{ type_studie.type_studie.name }}</h5>
             {% for studie_medical in studies_medicals %}
             <div class="card w-100 mt-3">
                 <div class="card-body">
                     <h5 class="card-title">{{studie_medical.name}}</h5>
                     <p class="card-text">Realizado  {{ studie_medical.date_joined }}</p>
 
-                    <a href="{% url 'studies_medicals:studiesmedicals_detail' studie_medical.id %}" class="btn btn-primary">Ver Resultados</a>
+                    <a href="{% url 'studies_medicals:studiesmedicals_detail' studie_medical.id %}" class="btn btn-primary">Ver resultados</a>
                 </div>
             </div>
             {% endfor %}
