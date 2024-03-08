@@ -26,7 +26,7 @@ DEBUG = os.environ.get('DEBUG')
 
 
 
-ALLOWED_HOSTS = ["CMCousin.pythonanywhere.com"]
+ALLOWED_HOSTS = []
 
 
 INSTALLED_APPS = [
