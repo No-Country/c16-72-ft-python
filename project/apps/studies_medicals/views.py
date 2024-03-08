@@ -158,13 +158,13 @@ class CreateStudieMedicalView(LoginRequiredMixin, View):
                     new_studie.patient = medical_history
                     new_studie.save()
                     
-                    messages.success(request, "El estudio medico se a creado", extra_tags="alert alert-success")
+                    messages.success(request, "Exámen creado correctamente.", extra_tags="alert alert-success")
                     return redirect('studies_medicals:studiesmedicals_list')
                 
                 except User.DoesNotExist:
-                    messages.success(request, "El dni del paciente no existe", extra_tags="alert alert-danger")
+                    messages.success(request, "El dni del paciente no existe.", extra_tags="alert alert-danger")
                 except MedicalHistory.DoesNotExist:
-                    messages.success(request, "El paciente no tiene un historial medico asociado", extra_tags="alert alert-danger")
+                    messages.success(request, "El paciente no tiene un historial médico asociado.", extra_tags="alert alert-danger")
               
             context = {'form' : form}
             return render(request, 'studies_medicals/medical/form.html', context)
@@ -209,13 +209,13 @@ class UpdateStudieMedicalView(LoginRequiredMixin, View):
                     update_studie.medical = request.user
                     update_studie.patient = medical_history
                     update_studie.save()
-                    messages.success(request, "El estudio medico se ha actualizado", extra_tags="alert alert-success")
+                    messages.success(request, "Exámen actualizado correctamente.", extra_tags="alert alert-success")
                     return redirect('studies_medicals:studiesmedicals_list')
                 
                 except User.DoesNotExist:
-                    messages.success(request, "El dni del paciente no existe", extra_tags="alert alert-danger")
+                    messages.success(request, "El dni del paciente no existe.", extra_tags="alert alert-danger")
                 except MedicalHistory.DoesNotExist:
-                    messages.success(request, "El paciente no tiene un historial medico asociado", extra_tags="alert alert-danger")
+                    messages.success(request, "El paciente no tiene un historial medico asociado.", extra_tags="alert alert-danger")
               
             context = {'form' : form}
             return render(request, 'studies_medicals/medical/form.html', context)
@@ -235,7 +235,7 @@ def delete_studieMedical_view(request, pk):
         try:
             studie_medical = get_object_or_404(StudiesMedicals, pk=pk, medical=request.user)
             studie_medical.delete()
-            messages.success(request, "El estudio medico se ha eliminado", extra_tags="alert alert-success")
+            messages.success(request, "Exámen eliminado correctamente.", extra_tags="alert alert-success")
             return redirect('studies_medicals:studiesmedicals_list')
         except:
             return render(request, 'components/404.html')

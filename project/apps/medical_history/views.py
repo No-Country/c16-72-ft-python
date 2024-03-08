@@ -64,7 +64,7 @@ class MedicalHistoryDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     success_url = reverse_lazy("medical_history:medicalhistory_list")
 
     def get_success_url(self):
-            messages.success(self.request, "Historial eliminado correctamente.", extra_tags="alert alert-danger")
+            messages.success(self.request, "Historial eliminado correctamente.", extra_tags="alert alert-success")
             return super().get_success_url()
      
     def test_func(self):
@@ -104,5 +104,5 @@ def delete_history_view(request, pk):
 
     studie_medical = get_object_or_404(models.MedicalHistory, pk=pk)
     studie_medical.delete()
-    messages.success(request, "Historial eliminado correctamente", extra_tags="alert alert-success")
+    messages.success(request, "Historial eliminado correctamente.", extra_tags="alert alert-success")
     return redirect('studies_medicals:studiesmedicals_list')
