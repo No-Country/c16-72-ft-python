@@ -9,7 +9,7 @@
                 <i class="bi bi-house-door-fill text-primary"></i>
                 Inicio
             </a></li>
-                <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Examenes</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_list' %}">Exámenes</a></li>
                 {% if patient %}
                 <li class="breadcrumb-item"><a href="{% url 'studies_medicals:studiesmedicals_type' patient.patient.id %}">{{ patient.patient }}</a></li>
                 {% endif %}
