@@ -78,7 +78,6 @@
   <img src="https://img.shields.io/badge/Django-%23092E20.svg?logo=django&logoColor=white" alt="Django" style="height: 30px;">
   <img src="https://img.shields.io/badge/HTML/CSS-%23E34F26.svg?logo=html5&logoColor=white" alt="HTML/CSS" style="height: 30px;">
   <img src="https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?logo=javascript&logoColor=black" alt="JavaScript" style="height: 30px;">
-  <img src="https://img.shields.io/badge/jQuery-%230769AD.svg?logo=jquery&logoColor=white" alt="jQuery" style="height: 30px;">
   <img src="https://img.shields.io/badge/MySQL-%2300758F.svg?logo=mysql&logoColor=white" alt="MySQL" style="height: 30px;">
 </div>
 
