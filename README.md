@@ -56,7 +56,7 @@
       </a>    
     </td>
     <td align="center">
-      <img src="https://media.licdn.com/dms/image/D4D03AQGj9Hcc9uny1Q/profile-displayphoto-shrink_800_800/0/1704305853538?e=1715212800&v=beta&t=QTiOgUX7qXPp4Lg2BYj0qURK35hB1DWsX2RwUJ4dO3Y" alt="Miguel Angel Rizzi" height=200 width=200>
+      <img src="https://media.licdn.com/dms/image/D4D03AQGs4Lw7MdWABg/profile-displayphoto-shrink_800_800/0/1711417354258?e=1717027200&v=beta&t=LQkOdDmUJ4xqgJ336lHRJW-y48eAD2VRE6PHGfryiZI" alt="Miguel Angel Rizzi" height=200 width=200>
       <p><strong>Miguel Angel Rizzi</strong></p>
       <p>Desarrollador Full Stack</p>
       <a href="https://linkedin.com/in/miguel-angel-rizzi">
